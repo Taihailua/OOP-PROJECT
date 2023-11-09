@@ -1,1 +1,1 @@
-xin chào tụi bây
+10 điểm OOP
