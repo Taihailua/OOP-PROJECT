@@ -42,7 +42,7 @@ public class ImportStock implements FileIO{
     }
 
     public ImportStock() {
-        readFromFile("D:\\OOP-Java\\src\\DOAN\\data.txt");
+        readFromFile("textDocument\\data.txt");
     }
     
     public void add(){
