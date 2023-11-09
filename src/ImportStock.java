@@ -194,7 +194,7 @@ public class ImportStock implements FileIO{
     
     public void output(){
         System.out.println("-----------------Danh Sach Dien thoai-------------------");
-        System.out.println(String.format("|%-10s|%-20s|%-15s|%-6s|", "ID","NAME","PRICE(VND)","AMOUNT"));//);"Phone" + "name:" + name + ", ID:" + phoneID + ", price= " + DecFormat(price)+" VND" + Category.output()+ NSX.output()+ '}';
+        System.out.println(String.format("|%-10s|%-20s|%-15s|%-6s|", "ID","NAME","PRICE(VND)","AMOUNT"));
         for(int i=0;i<len;i++){
             products[i].output();
             System.out.println(String.format("|%-6d|",amount[i]));
