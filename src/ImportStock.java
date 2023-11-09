@@ -28,7 +28,14 @@ public class ImportStock implements FileIO{
                 ProductCategory Category=new ProductCategory();
                 Manufacturer NSX=new Manufacturer();
                 products[len-1]=new Phone(br.readLine(),br.readLine(),Integer.parseInt(br.readLine()),Category,NSX);
-                Category.setDescription(br.readLine());
+                Category.setSoDong(Integer.parseInt(br.readLine()));
+                String description="";
+                int n=Category.getSoDong();
+                while(n>0){
+                    description+=br.readLine()+"\n";
+                    n--;
+                }
+                Category.setDescription(description);
                 NSX.setName(br.readLine());
                 NSX.setAddress(br.readLine());
                 NSX.setPhoneNumber(br.readLine());
@@ -68,7 +75,7 @@ public class ImportStock implements FileIO{
             temp+=x.getName()+"\n";
             temp+=x.getPhoneID()+"\n";
             temp+=x.getPrice()+"\n";
-            temp+=x.getCategory()+"\n";
+            temp+=x.getCategory();
             temp+=x.getNSX()+"\n";
             temp+=amount[i-1]+"\n";
             i++;
@@ -79,19 +86,53 @@ public class ImportStock implements FileIO{
     public void add(){
         System.out.print("Nhap ma dien thoai can them: ");
         String ID=sc.nextLine();
-        System.out.print("Nhap so luong dien thoai: ");
-        int SoLuong=Integer.parseInt(sc.nextLine());
+        
         int pos=find(ID);
         if(pos==-1){
             len++;
             products=Arrays.copyOf(products,len);
             products[len-1]=new Phone();
-            products[len-1].input();
+            products[len-1].input(ID);
+            System.out.print("Nhap so luong dien thoai: ");
+            int SoLuong=Integer.parseInt(sc.nextLine());
             amount=Arrays.copyOf(amount,len);
             amount[len-1]=SoLuong;
         }
         else {
-            amount[pos]+=SoLuong;
+            System.out.print("Nhap so luong dien thoai: ");
+            amount[len-1]+=Integer.parseInt(sc.nextLine());
+        }
+        update();
+    }
+    
+    public void add(String ID,int amount){
+        int pos=find(ID);
+        if(pos==-1){
+            len++;
+            products=Arrays.copyOf(products,len);
+            products[len-1]=new Phone();
+            products[len-1].input(ID);
+            this.amount=Arrays.copyOf(this.amount,len);
+            this.amount[len-1]=amount;
+        }
+        else {
+            this.amount[len-1]+=amount;
+        }
+        update();
+    }
+    
+    public void add(Phone phone,int amount){
+        int pos=find(phone.getPhoneID());
+        if(pos==-1){
+            len++;
+            products=Arrays.copyOf(products,len);
+            products[len-1]=new Phone();
+            products[len-1]=phone;
+            this.amount=Arrays.copyOf(this.amount,len);
+            this.amount[len-1]=amount;
+        }
+        else {
+            this.amount[len-1]+=Integer.parseInt(sc.nextLine());
         }
         update();
     }
@@ -110,17 +151,17 @@ public class ImportStock implements FileIO{
             System.out.print("Moi chon chuc nang: ");
             int n=Integer.parseInt(sc.nextLine());
             switch(n){
-                case 1: System.out.print("Nhap phoneID: ");
+                case 1: System.out.print("New phoneID: ");
                     products[pos].setPhoneID(sc.nextLine());break;
-                case 2: System.out.print("Nhap name: ");
+                case 2: System.out.print("New name: ");
                     products[pos].setName(sc.nextLine());break;
-                case 3: System.out.print("Nhap price: ");
+                case 3: System.out.print("New price: ");
                     products[pos].setPrice(Integer.parseInt(sc.nextLine()));break;
                 case 4: ProductCategory newCategory=new ProductCategory();
                     newCategory.input();
                     products[pos].setCategory(newCategory);break;
                 case 5: Manufacturer newNSX=new Manufacturer();
-                    newNSX.input();
+                    newNSX.newedit();
                     products[pos].setNSX(newNSX);break;
                 case 0: update(); return;
                 default: System.out.println("Sai cu phap");break;
@@ -147,15 +188,18 @@ public class ImportStock implements FileIO{
             amount[i-1]=amount[i];
         }
         amount=Arrays.copyOf(amount,len);
+        System.out.println("remove completed");
         update();
     }
     
     public void output(){
-        System.out.println("Danh Sach Dien thoai: ");
+        System.out.println("-----------------Danh Sach Dien thoai-------------------");
+        System.out.println(String.format("|%-10s|%-20s|%-15s|%-6s|", "ID","NAME","PRICE(VND)","AMOUNT"));//);"Phone" + "name:" + name + ", ID:" + phoneID + ", price= " + DecFormat(price)+" VND" + Category.output()+ NSX.output()+ '}';
         for(int i=0;i<len;i++){
             products[i].output();
-            System.out.println("So luong: "+amount[i]);
+            System.out.println(String.format("|%-6d|",amount[i]));
         }
+        System.out.println("--------------------------------------------------------");
     }
 
     public void sell(String phoneID,int amount){

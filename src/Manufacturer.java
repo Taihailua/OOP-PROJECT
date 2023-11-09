@@ -46,6 +46,16 @@ public class Manufacturer {
         System.out.print("Nhap SDT NSX: ");
         setPhoneNumber(sc.nextLine());
     }
+    
+    public void newedit(){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("New name NSX: ");
+        setName(sc.nextLine());
+        System.out.print("New address: ");
+        setAddress(sc.nextLine());
+        System.out.print("New phonenumber: ");
+        setPhoneNumber(sc.nextLine());
+    }
 
     @Override
     public String toString() {

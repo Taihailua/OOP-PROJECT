@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 public class ProductCategory {
     private String description;
-
+    private int SoDong;
+    
     public ProductCategory() {
     }
 
@@ -17,19 +18,31 @@ public class ProductCategory {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    public void input(){
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Nhap thong so dien thoai");
-        setDescription(sc.nextLine());
+
+    public int getSoDong() {
+        return SoDong;
     }
 
+    public void setSoDong(int SoDong) {
+        this.SoDong = SoDong;
+    }
+
+    public void input(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Nhap so dong cua thong so dien thoai: ");
+        setSoDong(Integer.parseInt(sc.nextLine()));
+        description="";
+        for(int i=1;i<=SoDong;i++){
+            System.out.print("Nhap thong so thu "+i+" : ");
+            description+=sc.nextLine()+"\n";
+        }
+    }
     @Override
     public String toString() {
-        return description;
+        return SoDong+"\n"+description;
     }
     
     public String output(){
-        return ", description: ";
+        return "Description:\n"+description;
     }
 }

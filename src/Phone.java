@@ -77,13 +77,27 @@ public class Phone{
         NSX.input();
     }
 
+    public void input(String phoneID){
+        setPhoneID(phoneID);
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Nhap ten dien thoai: ");
+        setName(sc.nextLine());
+        System.out.print("Nhap gia: ");
+        setPrice(Integer.parseInt(sc.nextLine()));
+        Category=new ProductCategory();
+        Category.input();
+        NSX=new Manufacturer();
+        NSX.input();
+    }
+    
     @Override
     public String toString() {
-        return "Phone {" + "name:" + name + ", ID:" + phoneID + ", price= " + DecFormat(price)+" VND" + Category.output()+ NSX.output()+ '}';
+        //return "Phone {" + "name:" + name + ", ID:" + phoneID + ", price= " + DecFormat(price)+" VND" + Category.output()+ NSX.output()+ '}';
+        return String.format("|%-10s|%-20s|%-15s", phoneID,name,DecFormat(price));
     }
 
     public void output(){
-        System.out.println(toString());
+        System.out.print(toString());
     }
     
 }
