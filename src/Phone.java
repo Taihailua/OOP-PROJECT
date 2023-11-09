@@ -50,7 +50,7 @@ public class Phone{
     public ProductCategory getCategory() {
         return Category;
     }
-
+    
     public void setCategory(ProductCategory Category) {
         this.Category = Category;
     }
@@ -79,7 +79,7 @@ public class Phone{
 
     @Override
     public String toString() {
-        return "Phone{" + "name=" + name + ", phoneID=" + phoneID + ", price=" + DecFormat(price)+"VND" + Category.toString() + NSX.toString() + '}';
+        return "Phone {" + "name:" + name + ", ID:" + phoneID + ", price= " + DecFormat(price)+" VND" + Category.output()+ NSX.output()+ '}';
     }
 
     public void output(){

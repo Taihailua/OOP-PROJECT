@@ -49,8 +49,10 @@ public class Manufacturer {
 
     @Override
     public String toString() {
-        return ", nameNSX=" + name + ", address=" + address + ", phoneNumber=" + phoneNumber;
+        return name +"\n"+address+"\n"+phoneNumber;
     }
     
-    
+    public String output(){
+        return ", nameNSX=" + name + ", address=" + address + ", phoneNumber=" + phoneNumber;
+    }
 }

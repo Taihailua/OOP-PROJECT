@@ -26,6 +26,10 @@ public class ProductCategory {
 
     @Override
     public String toString() {
-        return ", description=" + description;
+        return description;
+    }
+    
+    public String output(){
+        return ", description: ";
     }
 }

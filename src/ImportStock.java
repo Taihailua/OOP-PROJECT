@@ -2,6 +2,8 @@ import java.util.Scanner;
 import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class ImportStock implements FileIO{
@@ -39,8 +41,15 @@ public class ImportStock implements FileIO{
     }
     
     @Override
-    public void writeToFile(String fileName){
-        
+    public void writeToFile(String fileName,String data){
+        try {
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(data);
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public int find(String phoneID){
@@ -49,6 +58,22 @@ public class ImportStock implements FileIO{
                 return i;
         }
         return -1;
+    }
+    
+    public void update(){
+        int i=1;
+        String temp="";
+        for(var x:products){
+            temp+="DT"+i+"\n";
+            temp+=x.getName()+"\n";
+            temp+=x.getPhoneID()+"\n";
+            temp+=x.getPrice()+"\n";
+            temp+=x.getCategory()+"\n";
+            temp+=x.getNSX()+"\n";
+            temp+=amount[i-1]+"\n";
+            i++;
+        }
+        writeToFile("data\\data.txt", temp);
     }
     
     public void add(){
@@ -68,6 +93,7 @@ public class ImportStock implements FileIO{
         else {
             amount[pos]+=SoLuong;
         }
+        update();
     }
     
     public void edit(){
@@ -96,17 +122,15 @@ public class ImportStock implements FileIO{
                 case 5: Manufacturer newNSX=new Manufacturer();
                     newNSX.input();
                     products[pos].setNSX(newNSX);break;
-                case 0: return;
+                case 0: update(); return;
                 default: System.out.println("Sai cu phap");break;
             }
         }
+        
     }
     
-    public void remove(){
-        System.out.print("Nhap ma dien thoai can xoa: ");
-        String ID=sc.nextLine();
+    public void remove(String ID){
         int pos=find(ID);
-        
         if(pos==-1){
             System.out.println("Khong tim thay");
             return;
@@ -123,6 +147,7 @@ public class ImportStock implements FileIO{
             amount[i-1]=amount[i];
         }
         amount=Arrays.copyOf(amount,len);
+        update();
     }
     
     public void output(){
@@ -145,5 +170,6 @@ public class ImportStock implements FileIO{
             return;
         }
         this.amount[pos]-=amount;
+        update();
     }
 }
