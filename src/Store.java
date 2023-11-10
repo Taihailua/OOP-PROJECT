@@ -48,11 +48,4 @@ public class Store{
         }
         return total;
     }
-    public static void main(String[] args) {
-        Store Store=new Store();
-        Store.DSDT.output();
-//        Store.DSDT.add();
-//        Store.DSDT.edit();
-        Store.DSDT.findName("SamSung");
-    }
 }
