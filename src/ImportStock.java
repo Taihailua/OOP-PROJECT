@@ -19,6 +19,9 @@ public class ImportStock implements FileIO{
         readFromFile("data\\data.txt");
     }
     
+    public ImportStock(int n) {
+    }
+    
     @Override
     public void readFromFile(String fileName){
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
@@ -59,14 +62,6 @@ public class ImportStock implements FileIO{
         }
     }
 
-    public int find(String phoneID){
-        for(int i=0;i<len;i++){
-            if(products[i].getPhoneID().equals(phoneID))
-                return i;
-        }
-        return -1;
-    }
-    
     public void update(){
         int i=1;
         String temp="";
@@ -83,11 +78,30 @@ public class ImportStock implements FileIO{
         writeToFile("data\\data.txt", temp);
     }
     
+    public int findID(String phoneID){
+        for(int i=0;i<len;i++){
+            if(products[i].getPhoneID().equals(phoneID))
+                return i;
+        }
+        return -1;
+    }
+    
+    public void findName(String name){
+        int n=0;
+        ImportStock list=new ImportStock(n);
+        for(int i=0;i<len;i++){
+            if(products[i].getName().toLowerCase().contains(name.toLowerCase())){
+                list.add(products[i],amount[i]);
+            } 
+        }
+        list.output();
+    }
+    
     public void add(){
         System.out.print("Nhap ma dien thoai can them: ");
         String ID=sc.nextLine();
         
-        int pos=find(ID);
+        int pos=findID(ID);
         if(pos==-1){
             len++;
             products=Arrays.copyOf(products,len);
@@ -106,7 +120,7 @@ public class ImportStock implements FileIO{
     }
     
     public void add(String ID,int amount){
-        int pos=find(ID);
+        int pos=findID(ID);
         if(pos==-1){
             len++;
             products=Arrays.copyOf(products,len);
@@ -122,7 +136,7 @@ public class ImportStock implements FileIO{
     }
     
     public void add(Phone phone,int amount){
-        int pos=find(phone.getPhoneID());
+        int pos=findID(phone.getPhoneID());
         if(pos==-1){
             len++;
             products=Arrays.copyOf(products,len);
@@ -140,7 +154,7 @@ public class ImportStock implements FileIO{
     public void edit(){
         System.out.print("Nhap ma dien thoai can sua: ");
         String ID=sc.nextLine();
-        int pos=find(ID);
+        int pos=findID(ID);
         if(pos==-1){
             System.out.println("Khong tim thay dien thoai!");
             return;
@@ -171,7 +185,7 @@ public class ImportStock implements FileIO{
     }
     
     public void remove(String ID){
-        int pos=find(ID);
+        int pos=findID(ID);
         if(pos==-1){
             System.out.println("Khong tim thay");
             return;
@@ -203,7 +217,7 @@ public class ImportStock implements FileIO{
     }
 
     public void sell(String phoneID,int amount){
-        int pos=find(phoneID);
+        int pos=findID(phoneID);
         if(pos==-1){
             System.out.println("Dien thoai nay khong ton tai.");
             return;
