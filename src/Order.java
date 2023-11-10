@@ -2,9 +2,24 @@ public class Order {
     //private Customer customer;
     private OrderItem orderItems[] = new OrderItem[0];
     private int itemCount=0;// số lượng mục trong đơn hàng
+    private String orderCode;
+    private static int nexOrderCode=1;
     public Order() {
     }
 
+    public Order(String orderCode) {
+        this.orderCode = orderCode;
+    }
+
+    public String getOrderCode() {
+        return orderCode;
+    }
+    // tạo mã đơn hàng tự động
+    public String generateOrderCode(){
+        String orderCode="ORD"+String.format("%03d", nexOrderCode);
+        nexOrderCode++;
+        return orderCode;
+    }
 //    public Order(Customer customer) {
 //        
 //        this.customer=customer;
