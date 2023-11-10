@@ -75,7 +75,7 @@ public class ImportStock implements FileIO{
             temp+=amount[i-1]+"\n";
             i++;
         }
-        writeToFile("data\\data.txt", temp);
+        writeToFile("\\data\\data.txt", temp);
     }
     
     public int findID(String phoneID){
@@ -91,8 +91,8 @@ public class ImportStock implements FileIO{
         ImportStock list=new ImportStock(n);
         for(int i=0;i<len;i++){
             if(products[i].getName().toLowerCase().contains(name.toLowerCase())){
-                list.add(products[i],amount[i]);
-            } 
+                list.addListFind(products[i],amount[i]);
+            }
         }
         list.output();
     }
@@ -117,6 +117,21 @@ public class ImportStock implements FileIO{
             amount[len-1]+=Integer.parseInt(sc.nextLine());
         }
         update();
+    }
+    
+    public void addListFind(Phone phone,int amount){
+        int pos=findID(phone.getPhoneID());
+        if(pos==-1){
+            len++;
+            products=Arrays.copyOf(products,len);
+            products[len-1]=new Phone();
+            products[len-1]=phone;
+            this.amount=Arrays.copyOf(this.amount,len);
+            this.amount[len-1]=amount;
+        }
+        else {
+            this.amount[len-1]+=Integer.parseInt(sc.nextLine());
+        }
     }
     
     public void add(String ID,int amount){
