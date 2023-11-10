@@ -28,13 +28,13 @@ public class Order {
     public OrderItem[] getOrderItems() {
         return orderItems;
     }
-    public void listOrderItem(){
-        for(int i=0;i<itemCount;i++){
-            OrderItem orderItem =new OrderItem();
-            orderItem.input();
-            addOrderItem(orderItem);
-        }
-    }
+//    public void listOrderItem(){
+//        for(int i=0;i<itemCount;i++){
+//            OrderItem orderItem =new OrderItem();
+//            orderItem.input();
+//            addOrderItem(orderItem);
+//        }
+//    }
     
     public void addOrderItem(OrderItem orderItem){
         if(itemCount<orderItems.length){
@@ -74,21 +74,4 @@ public class Order {
         System.out.println("Total Cost:"+calculateTotalCost());
     }
 }
-class Main {
-    public static void main(String[] args) {
-       
-        ProductCategory PC1=new ProductCategory("Dien Thoai IP13");
-        ProductCategory PC2=new ProductCategory("Dien Thoai Sasung S21");
-        Manufacturer Mf1=new Manufacturer("Vuong","Q12","122345");
-        
-        Phone phone1 = new Phone("iPhone 13","IP13", 999,PC1,Mf1);
-        Phone phone2 = new Phone("Samsung Galaxy S21","SS21", 799,PC2,Mf1);
 
-      
-        OrderItem orderItem1 = new OrderItem(phone1, 2); 
-        OrderItem orderItem2 = new OrderItem(phone2, 3);
-
-        
- 
-    }
-   }

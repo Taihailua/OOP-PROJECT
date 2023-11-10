@@ -1,32 +1,13 @@
-
-public class Store {
-    private Phone []products =new Phone[0];
+public class Store{
+    private ImportStock DSDT =new ImportStock();
     private Order []orders =new Order[0];
     private int countOrder=0;
-     private int countPhone=0;
     
-    public void addProduct(Phone product){
-       for(int i=0;i<=products.length;i++){
-               products[++countPhone]=product;  
-       }
-    }
-    public void removeProduct(int index){
-       if(index>=0 && index<countPhone){
-            for(int i=0;i<index-1;i++){
-                products[i]=products[i+1];
-            }
-            products[countPhone-1]=null;
-            countPhone--;
-        }
-        else {
-            System.out.println("Index khong hop le.Khong the xoa!");
-        }
-    }
    public void addOrder(Order order){
         for(int i=0;i<=orders.length;i++){
-            orders[++countOrder]=order;
+            countOrder++;
+            orders[i]=order;
         }
-       
     }
     public void removeOrder(int index){
         if(index>=0 && index<countOrder){
@@ -40,15 +21,6 @@ public class Store {
             System.out.println("Index khong hop le.Khong the xoa!");
         }
     }
-    // hiển thị thông tin về tất cả sản phẩm trong của hàng
-    public void displayProduct(){
-        System.out.println("Product:");
-        for(Phone product : products){
-            if(product!=null){
-                product.output();
-            }
-        }
-    }
     // hiển thị thông tin về tất cả đơn hàng trong cửa hàng
     public void displayOrder(){
         System.out.println("Order:");
@@ -57,14 +29,6 @@ public class Store {
                 order.displayOrderDetail();
             }
         }
-    }
-    // tìm tên sản phẩm
-    public Phone findProductByName(String productName){
-        for(Phone product :products){
-            if(product !=null && product.getName().equals(productName))
-                return product;
-        }
-        return null;
     }
     //tìm đơn hàng
     public Order findOrderByCode(String orderCode){
@@ -83,5 +47,12 @@ public class Store {
             }
         }
         return total;
+    }
+    public static void main(String[] args) {
+        Store Store=new Store();
+        Store.DSDT.output();
+//        Store.DSDT.add();
+//        Store.DSDT.edit();
+        Store.DSDT.findName("SamSung");
     }
 }
