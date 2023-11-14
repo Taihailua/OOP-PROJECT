@@ -1,49 +1,34 @@
+
+import java.util.Arrays;
+
 public class Order {
     //private Customer customer;
     private OrderItem orderItems[] = new OrderItem[0];
     private int itemCount=0;// số lượng mục trong đơn hàng
     private String orderCode;
-    private static int nexOrderCode=1;
+    private static int nextOrderCode=1;
+   
+    
     public Order() {
+        this.orderCode = generateOrderCode();
     }
 
-    public Order(String orderCode) {
-        this.orderCode = orderCode;
+    // tạo mã đơn hàng tự động
+    public static String generateOrderCode(){
+        String Code="ORD"+String.format("%03d", nextOrderCode);
+        nextOrderCode++;
+        return Code;
     }
-
     public String getOrderCode() {
         return orderCode;
     }
-    // tạo mã đơn hàng tự động
-    public String generateOrderCode(){
-        String orderCode="ORD"+String.format("%03d", nexOrderCode);
-        nexOrderCode++;
-        return orderCode;
-    }
-//    public Order(Customer customer) {
-//        
-//        this.customer=customer;
-//    }
-    
-    public OrderItem[] getOrderItems() {
-        return orderItems;
-    }
-//    public void listOrderItem(){
-//        for(int i=0;i<itemCount;i++){
-//            OrderItem orderItem =new OrderItem();
-//            orderItem.input();
-//            addOrderItem(orderItem);
-//        }
-//    }
-    
+
     public void addOrderItem(OrderItem orderItem){
-        if(itemCount<orderItems.length){
-            orderItems[itemCount]=orderItem;
-            itemCount++;
-        }
-        else{
-            System.out.println("Khong the them !!");
-        }
+        itemCount++;
+        orderItems=Arrays.copyOf(orderItems, itemCount);
+        orderItems[itemCount-1]=new OrderItem();
+        orderItem.input();
+        orderItems[itemCount-1]=orderItem;
     }
     public void removeOrderItem(int index){
         if(index >=0 && index <itemCount){
@@ -52,6 +37,7 @@ public class Order {
             }
             orderItems[itemCount-1]=null;
             itemCount--;
+            System.out.println("Xoa thanh cong!");
         }
         else{
             System.out.println("Vi tri khong hop le.Khong the xoa!!");
