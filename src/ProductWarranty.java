@@ -4,19 +4,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.Scanner;
 public class ProductWarranty extends Warranty {
-    private String productSerialNumber; // sẽ bổ sung sau
-    private String productModel; // sẽ bổ sung sau
     static Scanner sc = new Scanner(System.in);
-
-
-    public void setProductModel(String productModel) {
-        this.productModel = productModel;
-    }
-
-    public String getProductModel() {
-        return productModel;
-    }
-
+    
     @Override
     public void calculateRemainingWarranty() {
         // Định dạng thời gian
