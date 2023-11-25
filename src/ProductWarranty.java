@@ -1,13 +1,21 @@
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.Scanner;
 public class ProductWarranty extends Warranty {
     private String productSerialNumber; // sẽ bổ sung sau
     private String productModel; // sẽ bổ sung sau
+    static Scanner sc = new Scanner(System.in);
 
-    
+
+    public void setProductModel(String productModel) {
+        this.productModel = productModel;
+    }
+
+    public String getProductModel() {
+        return productModel;
+    }
 
     @Override
     public void calculateRemainingWarranty() {
@@ -20,16 +28,17 @@ public class ProductWarranty extends Warranty {
         try {
             Date endDate = dateFormat.parse(getHanKetThuc());
             Date currentDate = new Date();
-            long diffInMillies = Math.abs(endDate.getTime() - currentDate.getTime());
+            long diffInMillies = endDate.getTime() - currentDate.getTime();
             long diff = java.util.concurrent.TimeUnit.DAYS.convert(diffInMillies, java.util.concurrent.TimeUnit.MILLISECONDS);
-
+            if (diff > 0)
             System.out.println("So ngay bao hanh con lai: " + diff);
+            else 
+            System.out.println("So ngay bao hanh con lai: 0");
         } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
     }
     
-
     @Override
     public void isWarrantyValid() {
         // Định dạng thời gian
@@ -38,7 +47,7 @@ public class ProductWarranty extends Warranty {
         try {
             Date endDate = dateFormat.parse(getHanKetThuc());
             Date currentDate = new Date();
-            long diffInMillies = Math.abs(endDate.getTime() - currentDate.getTime());
+            long diffInMillies = endDate.getTime() - currentDate.getTime();
             long diff = java.util.concurrent.TimeUnit.DAYS.convert(diffInMillies, java.util.concurrent.TimeUnit.MILLISECONDS);
             if (diff <= 0)
                 System.out.println("Da het han bao hanh");
@@ -51,7 +60,8 @@ public class ProductWarranty extends Warranty {
 
     @Override
     public void printWarrantyDetails() {
-
+        isWarrantyValid();
+        calculateRemainingWarranty();
     }
 
 }

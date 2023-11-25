@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.Calendar;
 public abstract class Warranty {
+    private String productSerialNumber; 
+    private String productModel;
     private Phone product=new Phone();
     private String description; 
     private String tenKhachHang;
@@ -10,19 +12,21 @@ public abstract class Warranty {
 
 
 
-    public Warranty(Phone products, String description, String tenKhachHang, String hanBatDau, String hanKetThuc) {
+    public Warranty(Phone products, String description, String tenKhachHang, String hanBatDau, String hanKetThuc, String productSerialNumber) {
         this.product = product;
+        this.productSerialNumber = productSerialNumber;
+        this.productModel = productModel;
         this.description = description;
         this.tenKhachHang = tenKhachHang;
         this.hanBatDau = hanBatDau;
         this.hanKetThuc = hanKetThuc;
     }
+
     public Warranty () {
     }
 
+
     public void setProduct(Phone product) {
-        System.out.println("Nhap ten dien thoai can bao hanh");
-        product.setName(sc.nextLine());
         this.product = product;
     }
 
@@ -30,9 +34,26 @@ public abstract class Warranty {
         return product;
     }
 
+    public void setProductSerialNumber(String productSerialNumber) {
+        this.productSerialNumber = productSerialNumber;
+    }
+
+    public String getProductSerialNumber() {
+        return productSerialNumber;
+    }
+
+    public String getProductModel() {
+        return productModel;
+    }
+    public void setProductModel(String productModel) {
+        this.productModel = productModel;
+    }
+
+
+
+
     public void setDescription(String description) {
-        System.out.println("Nhap mo ta cua van de cua dien thoai");
-        description = sc.nextLine();
+
         this.description = description;
     }
 
@@ -41,8 +62,7 @@ public abstract class Warranty {
     }
 
     public void setTenKhachHang(String tenKhachHang) {
-        System.out.println("Hay nhap ten khach hang den bao hanh");
-        tenKhachHang = sc.nextLine();
+
         this.tenKhachHang = tenKhachHang;
     }
 
@@ -51,8 +71,7 @@ public abstract class Warranty {
     }
 
     public void setHanBatDau(String hanBatDau) {
-        System.out.println("Hay nhap ngay kich hoat bao hanh");
-        hanBatDau = sc.nextLine();
+
         this.hanBatDau = hanBatDau;
     }
 
@@ -61,8 +80,7 @@ public abstract class Warranty {
     }
 
     public void setHanketThuc(String hanKetThuc) {
-        System.out.println("Hay nhap ngay ket thuc bao hanh");
-        hanKetThuc = sc.nextLine();
+
         this.hanKetThuc = hanKetThuc;
     }
 
@@ -71,23 +89,32 @@ public abstract class Warranty {
     }
 
     public void input() {
-        setProduct(product);
-        setDescription(description);
-        setTenKhachHang(tenKhachHang);
-        setHanBatDau(hanBatDau);
-        setHanketThuc(hanKetThuc);
+        System.out.println("Nhap ten dien thoai can bao hanh");
+        product.setName(sc.nextLine());
+        System.out.println("Please enter product's serial number: ");
+        setProductSerialNumber(sc.nextLine());
+        System.out.println("Please enter product's model: ");
+        setProductModel(sc.nextLine());
+        System.out.println("Nhap mo ta cua van de cua dien thoai");
+        setDescription(sc.nextLine());
+        System.out.println("Hay nhap ten khach hang den bao hanh");
+        setTenKhachHang(sc.nextLine());
+        System.out.println("Hay nhap ngay kich hoat bao hanh (Ghi chu DD/MM/YYYY): ");
+        setHanBatDau(sc.nextLine());
+        System.out.println("Hay nhap ngay ket thuc bao hanh (Ghi chu DD/MM/YYYY): ");
+        setHanketThuc(sc.nextLine());
     }
 
     @Override
     public String toString() {
-        return "Ten Dien Thoai: " + product.getName() + "\tMo Ta loi: " + description + "\tTen Khach Hang: " + tenKhachHang + "\tNgay Kich Hoat BH: " + hanBatDau +"\tNgay het han BH: " + hanKetThuc ;
+        return  "Ten Dien Thoai: " + product.getName() + "\t\tSo series: " + productSerialNumber + "\t\tModel: " + getProductModel() + "\t\tMo Ta loi: " + description + "\nTen Khach Hang: " + tenKhachHang + "\t\tNgay Kich Hoat BH: " + hanBatDau +"\t\tNgay het han BH: " + hanKetThuc ;
     }
     public abstract void calculateRemainingWarranty();
  
     public abstract void isWarrantyValid();
 
     public abstract void printWarrantyDetails();
-
+    
     public void output() {
         System.out.println(toString());
     }
