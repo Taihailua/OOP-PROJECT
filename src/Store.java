@@ -1,13 +1,17 @@
+
+import java.util.Arrays;
+
 public class Store{
     private ImportStock DSDT =new ImportStock();
     private Order []orders =new Order[0];
     private int countOrder=0;
     
    public void addOrder(Order order){
-        for(int i=0;i<=orders.length;i++){
-            countOrder++;
-            orders[i]=order;
-        }
+       countOrder++;
+       orders=Arrays.copyOf(orders,countOrder);
+       orders[countOrder-1]=new Order();
+       order.input();
+       orders[countOrder-1]=order;
     }
     public void removeOrder(int index){
         if(index>=0 && index<countOrder){
