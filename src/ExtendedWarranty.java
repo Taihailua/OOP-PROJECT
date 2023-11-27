@@ -5,7 +5,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 public class ExtendedWarranty extends Warranty {
-    private int extendedPeriod; //sẽ bổ sung sau 
     static Scanner sc = new Scanner(System.in);
     @Override
     public void calculateRemainingWarranty() {
