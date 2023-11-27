@@ -55,8 +55,10 @@ public class ExtendedWarranty extends Warranty {
             long diff = java.util.concurrent.TimeUnit.DAYS.convert(diffInMillies, java.util.concurrent.TimeUnit.MILLISECONDS);
             if (diff <= 0)
                 System.out.println("Da het han bao hanh");
-            else
+            else {
                 System.out.println("Con han bao hanh");
+                System.out.println("So ngay bao hanh con lai");
+            }
         } catch (java.text.ParseException e) {
             e.printStackTrace();
         }
