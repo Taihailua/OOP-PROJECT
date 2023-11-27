@@ -3,14 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package OopKiet;
-
 import java.util.Scanner;
 
-/**
- *
- * @author KIET
- */
 public class Employee extends Person {
 
     private String idEmployee;

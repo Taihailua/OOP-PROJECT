@@ -1,5 +1,3 @@
-package OopKiet;
-
 import java.util.Scanner;
 
 public class Customer extends Person{
@@ -17,14 +15,17 @@ public class Customer extends Person{
         return idCustomer;
     }
 
+    @Override
     public String getName() {
         return name;
     }
+
 
     public String getPhone() {
         return phone;
     }
 
+    @Override
     public String getAddress() {
         return address;
     }
