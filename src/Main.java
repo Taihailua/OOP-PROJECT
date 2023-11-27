@@ -1,5 +1,3 @@
-package OopKiet;
-
 import java.util.Scanner;
 
 public class Main {
