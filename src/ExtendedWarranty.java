@@ -57,7 +57,7 @@ public class ExtendedWarranty extends Warranty {
                 System.out.println("Da het han bao hanh");
             else {
                 System.out.println("Con han bao hanh");
-                System.out.println("So ngay bao hanh con lai");
+                System.out.println("So ngay bao hanh con lai" + diff);
             }
         } catch (java.text.ParseException e) {
             e.printStackTrace();
