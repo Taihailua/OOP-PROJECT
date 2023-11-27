@@ -50,6 +50,10 @@ public class Order {
         }
         return totalCost;
     }
+    public void input(){
+        getOrderCode();
+        displayOrderDetail();
+    }
     public void displayOrderDetail(){
         System.out.println("Order Detail:");
        // System.out.println("Customer:"+customer.getName());
