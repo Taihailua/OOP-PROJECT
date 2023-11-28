@@ -1,0 +1,31 @@
+Khach hang:
+- show danh sach san pham ?MVuong X sanpham.txt
+- tim kiem san pham theo ten? MVUOng X them san pham showMenu()
+
+- Gio hang (TVuong) + Menu: them, xoa, sua, 4.+thanh toan =>
+Nhap id nhan vien => Sau khi thanh toan, Show hoa don ra
+
+-Hoa don (TVuong): file hoadon.txt
++Hoa don , thong tin san pham daid nhan vien, id khach hang,thoi gian,
+Menu:
++ showHoaDon() trong file hoadon.txt
+
+
+-Report(TVuong) : 
+Menu: 
++ showHoaDon() trong file hoadon.txt
++ show danh san pham() trong file sanpham.txt
++ showTongTienBanDuoc() tinh tong tien trong file hoadon.txt
+
+- Bao hanh?(Menu) Tai: +khach hang nhap ten dien thoai, show ra dien thoai con bao hanh; baohanh.txt
+
+- Dang nhap, dang ki? Kiet 
+	+sAU KHI DANG NHAP THI LUU BIEN ID KHACH HANG:
+
+Nhan Vien: 
+- xem: 
+	+ danh sach khach hang(kIET) X
+	+ danh sach nhan vien(kIET) 
+	+ danh sach san pham (MVuong) X
+	+ them, sua, xoa san pham (MVuong) X
+	+ tim kiem san pham name (MVuong) X

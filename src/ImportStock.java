@@ -74,7 +74,7 @@ public class ImportStock implements FileIO{
             temp+=amount[i-1]+"\n";
             i++;
         }
-        writeToFile("\\data\\sanpham.txt", temp);
+        writeToFile("data\\sanpham.txt", temp);
     }
     
     public int findID(String phoneID){
@@ -173,22 +173,20 @@ public class ImportStock implements FileIO{
             System.out.println("Khong tim thay dien thoai!");
             return;
         }
-        System.out.println("1. Edit phoneID\n2. Edit name\n3. Edit price");
-        System.out.println("4. Edit Category\n5. Edit NSX\n0. Exit");
+        System.out.println("1. Edit name\n2. Edit price");
+        System.out.println("3. Edit Category\n4. Edit NSX\n0. Exit");
         while(true){
             System.out.print("Moi chon chuc nang: ");
             int n=Integer.parseInt(sc.nextLine());
             switch(n){
-                case 1: System.out.print("New phoneID: ");
-                    products[pos].setPhoneID(sc.nextLine());break;
-                case 2: System.out.print("New name: ");
+                case 1: System.out.print("New name: ");
                     products[pos].setName(sc.nextLine());break;
-                case 3: System.out.print("New price: ");
+                case 2: System.out.print("New price: ");
                     products[pos].setPrice(Integer.parseInt(sc.nextLine()));break;
-                case 4: ProductCategory newCategory=new ProductCategory();
+                case 3: ProductCategory newCategory=new ProductCategory();
                     newCategory.input();
                     products[pos].setCategory(newCategory);break;
-                case 5: Manufacturer newNSX=new Manufacturer();
+                case 4: Manufacturer newNSX=new Manufacturer();
                     newNSX.newedit();
                     products[pos].setNSX(newNSX);break;
                 case 0: update(); return;

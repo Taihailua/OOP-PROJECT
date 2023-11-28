@@ -29,7 +29,7 @@ public class ProductCategory {
 
     public void input(){
         Scanner sc=new Scanner(System.in);
-        System.out.println("Nhap so dong cua thong so dien thoai: ");
+        System.out.print("Thong so dien thoai co may dong? : ");
         setSoDong(Integer.parseInt(sc.nextLine()));
         description="";
         for(int i=1;i<=SoDong;i++){
