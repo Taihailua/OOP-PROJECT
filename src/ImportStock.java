@@ -10,8 +10,7 @@ public class ImportStock implements FileIO{
     private Phone[] products=new Phone[0];
     private int[] amount=new int[0];
     private int len=0;
-//    private Salesperson receiver;
-    
+//    private Employee receiver;
     static Scanner sc=new Scanner(System.in);
     
     
@@ -65,7 +64,7 @@ public class ImportStock implements FileIO{
     public void update(){
         int i=1;
         String temp="";
-        for(var x:products){
+        for(Phone x:products){
             temp+="DT"+i+"\n";
             temp+=x.getName()+"\n";
             temp+=x.getPhoneID()+"\n";
@@ -220,6 +219,27 @@ public class ImportStock implements FileIO{
         System.out.println("remove completed");
         update();
     }
+    public void remove(){
+        System.out.print("Nhap ID san pham muon xoa: ");
+        int pos=findID(sc.nextLine());
+        if(pos==-1){
+            System.out.println("Khong tim thay");
+            return;
+        }
+        
+        for(int i=pos+1;i<len;i++){
+            products[i-1]=products[i];
+        }
+        len--;
+        products=Arrays.copyOf(products,len);
+        
+        for(int i=pos+1;i<len+1;i++){
+            amount[i-1]=amount[i];
+        }
+        amount=Arrays.copyOf(amount,len);
+        System.out.println("remove completed");
+        update();
+    }
     
     public void output(){
         System.out.println("-----------------Danh Sach Dien thoai-------------------");
@@ -244,5 +264,21 @@ public class ImportStock implements FileIO{
         }
         this.amount[pos]-=amount;
         update();
+    }
+    public void showMenu(){
+        while(true){
+            System.out.println("1. Hien thi danh sach dien thoai.\n2. Them san pham\n3. Sua san pham");
+            System.out.println("4. Xoa san pham\n0. Exit");
+            System.out.print("Moi chon chuc nang: ");
+            int n=Integer.parseInt(sc.nextLine());
+            switch(n){
+                case 1: output();break;
+                case 2: add();break;
+                case 3: edit();break;
+                case 4: remove();break;
+                case 0: update(); return;
+                default: System.out.println("Sai cu phap");break;
+            }
+        }
     }
 }
