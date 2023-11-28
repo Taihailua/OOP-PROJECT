@@ -15,7 +15,7 @@ public class ImportStock implements FileIO{
     
     
     public ImportStock() {
-        readFromFile("data\\data.txt");
+        readFromFile("data\\sanpham.txt");
     }
     
     public ImportStock(int n) {
@@ -74,7 +74,7 @@ public class ImportStock implements FileIO{
             temp+=amount[i-1]+"\n";
             i++;
         }
-        writeToFile("\\data\\data.txt", temp);
+        writeToFile("\\data\\sanpham.txt", temp);
     }
     
     public int findID(String phoneID){

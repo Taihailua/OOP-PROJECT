@@ -13,10 +13,6 @@ import java.util.Scanner;
 public class test {
     public static void main(String[] args) {
         ImportStock DS=new ImportStock();
-        DS.output();
-        System.out.print("Nhap ten muon tim kiem: ");
-        Scanner sc=new Scanner(System.in);
-        String name=sc.nextLine(); 
-        DS.findName(name);
+        DS.showMenu();
     }
 }
