@@ -17,7 +17,7 @@ public class Invoice {
         this.sale = sale;
         this.salesperson = salesperson;
     }
-
+//in hoá đơn
     public void printInvoice() {
         System.out.println("Invoice Information:");
         System.out.println("===============================");
@@ -28,7 +28,7 @@ public class Invoice {
         System.out.println("Total Amount: $" + sale.getTotalAmount());
         System.out.println("===============================");
     }
-
+//lưu hoá đơn dô file
     public void saveToFile(String fileName) {
         try {
             FileWriter writer = new FileWriter(fileName);
@@ -47,7 +47,7 @@ public class Invoice {
             e.printStackTrace();
         }
     }
-
+//đọc hoá đơn từ file
     public void readFromFile(String fileName) {
         try {
             File file = new File(fileName);
