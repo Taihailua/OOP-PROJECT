@@ -13,6 +13,7 @@ public class PaymentGateway {
     }
 
     private void completePayment(double amount) {
+        // Thực hiện quy trình thanh toán ở đây
         System.out.println("Đã thanh toán thành công số tiền " + amount + " cho " + payment.getRecipient());
     }
 }
