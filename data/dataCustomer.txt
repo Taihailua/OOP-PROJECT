@@ -1,0 +1,4 @@
+KH001;Pham Van Kiet;0976204872;TPHCM;pvk210504@gmail.com
+KH002;Nguyen Van A;0987654321;Ha Noi;nguyenvana@gmail.com
+KH003;Tran Thi B;0901122334;Da Nang;tranthib@gmail.com
+KH004;Le Van C;0901122339;Can Tho;levanc@gmail.com

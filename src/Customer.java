@@ -11,6 +11,8 @@ public class Customer extends Person{
         this.idCustomer = idCustomer;
     }
 
+    
+
     public String getIdCustomer() {
         return idCustomer;
     }
@@ -54,20 +56,27 @@ public class Customer extends Person{
         this.email = email;
     }
     
-      public void inputCustomerInfo() {
-        Scanner scanner = new Scanner(System.in);
-
-        // Gọi phương thức inputInfo của lớp Person để nhập thông tin chung
-        
-
-        System.out.print("Nhap ma khach hang: ");
-        this.idCustomer = scanner.nextLine();
-        super.inputInfo();
-    }
 
     @Override
     public String toString() {
-        return "Customer{" + "\nidCustomer: " + idCustomer + "\nName: " + name + "\nPhone: " + phone + "\nAddress: " + address + "\nEmail: " + email+ '}' +"\n----------------------\n";
+        return idCustomer + ";" + name + ";" + phone + ";" + address + ";" + email;
+    }
+
+    public void inputCustomerInfo() {
+        Scanner scanner = new Scanner(System.in);
+
+
+        System.out.print("Nhập tên khách hàng: ");
+        setName(scanner.nextLine());
+
+        System.out.print("Nhập số điện thoại: ");
+        setPhone(scanner.nextLine());
+
+        System.out.print("Nhập địa chỉ: ");
+        setAddress(scanner.nextLine());
+
+        System.out.print("Nhập email: ");
+        setEmail(scanner.nextLine());
     }
       
 }

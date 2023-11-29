@@ -1,0 +1,5 @@
+NV001;Pham Van Kiet;0976204872;pvk210504@gmail.com;TPHCM;QL;2000000
+NV002;Truong Tan A;0987654321;nguyenvana@gmail.com;Ha Noi;NV;1000000
+NV003;L B;0901122334;tranthib@gmail.com;Da Nang;NV;1200000
+NV004;Tran Thi C;0901122339;levanc@gmail.com;Can Tho;NV;800000
+NV005;Nguyen Van D;09011496566;truongtand@gmail.com;Ca Mau;NV;600000
