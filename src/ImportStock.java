@@ -85,9 +85,10 @@ public class ImportStock implements FileIO{
         return -1;
     }
     
-    public void findName(String name){
-        int n=0;
-        ImportStock list=new ImportStock(n);
+    public void findName(){
+        System.out.print("Nhap ten san pham: ");
+        String name=sc.nextLine();
+        ImportStock list=new ImportStock(0);//constructor dung de tao doi tuong empty ImportStock, doi so n khong co tac dung
         for(int i=0;i<len;i++){
             if(products[i].getName().toLowerCase().contains(name.toLowerCase())){
                 list.addListFind(products[i],amount[i]);
@@ -265,8 +266,7 @@ public class ImportStock implements FileIO{
     }
     public void showMenu(){
         while(true){
-            System.out.println("1. Hien thi danh sach dien thoai.\n2. Them san pham\n3. Sua san pham");
-            System.out.println("4. Xoa san pham\n0. Exit");
+            System.out.println("1. Hien thi danh sach dien thoai.\n2. Them san pham\n3. Sua san pham\n4. Xoa san pham\n0. Exit");
             System.out.print("Moi chon chuc nang: ");
             int n=Integer.parseInt(sc.nextLine());
             switch(n){

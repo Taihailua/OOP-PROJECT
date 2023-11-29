@@ -1,6 +1,13 @@
-Khach hang:
-- show danh sach san pham ?MVuong X sanpham.txt
-- tim kiem san pham theo ten? MVUOng X them san pham showMenu()
+***MVuong
+-User:
+    + show danh sach san pham ?  => tạo đối tượng ImportStock và gọi hàm ".output();"
+    + tim kiem san pham theo ten? MVUOng => tạo đối tượng ImportStock và gọi hàm ".findName();"
+    + Ai quản lý các class Order làm việc này: Sau khi khách hàng nhấn thanh toán => gọi hàm sell(String ID,int amount) để giảm số lượng Sản phẩm trong kho
+-Admin: tạo đối tượng ImportStock và gọi hàm ".showMenu();"
+    +1. Hien thi danh sach dien thoai
+    +2. Them san pham
+    +3. Sua san pham
+    +4. Xoa san pham
 
 - Gio hang (TVuong) + Menu: them, xoa, sua, 4.+thanh toan =>
 Nhap id nhan vien => Sau khi thanh toan, Show hoa don ra
