@@ -30,7 +30,6 @@ public class OrderItem {
     public void setProduct(Phone product) {
         System.out.print("Nhap ten san pham:");
        product.setName(sc.nextLine());
-        
         this.product = product;
     }
 
@@ -41,7 +40,7 @@ public class OrderItem {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    public double getTotalCost(){
+    public int getTotalCost(){
         return product.getPrice()*amount;
     }
    public void input(){
@@ -51,7 +50,7 @@ public class OrderItem {
    }
     @Override
     public String toString() {
-        return "OrderItem:\n" + product + "\namount=" + amount + "\nTotalCost="+getTotalCost();
+        return product + "\namount=" + amount + "\t Cost="+getTotalCost();
     }
     public void output(){
         System.out.println(toString());
