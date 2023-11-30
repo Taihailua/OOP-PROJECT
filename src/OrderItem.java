@@ -2,15 +2,6 @@
 import java.net.Socket;
 import java.util.Scanner;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author Vuong
- */
 public class OrderItem {
     private Phone product;
     private int amount;
@@ -28,8 +19,8 @@ public class OrderItem {
     }
 
     public void setProduct(Phone product) {
-        System.out.print("Nhap ten san pham:");
-       product.setName(sc.nextLine());
+       
+        
         this.product = product;
     }
 
@@ -44,9 +35,13 @@ public class OrderItem {
         return product.getPrice()*amount;
     }
    public void input(){
-       setProduct(product);
-       System.out.print("Nhap so luong:");
+       Phone phone=new Phone();
+       System.out.print("Nhap ten san pham muon them vao gio hang:");
+       phone.setName(sc.nextLine());
+       setProduct(phone);
+       System.out.print("\nNhap so luong:");
        setAmount(Integer.parseInt(sc.nextLine()));
+       getTotalCost();
    }
     @Override
     public String toString() {

@@ -45,10 +45,11 @@ public class Invoice {
        if(!isPaid){
            System.out.println("Thanh toan thanh cong!");
            isPaid=true;
-       }
+         }
        else{
-           System.out.println("Thanh toan that bai!");
+           System.out.println("Thanh toan that bai!"); 
        }
+       return ;
    }
 //lưu hoá đơn vào file
     public void saveToFile(String fileName) {

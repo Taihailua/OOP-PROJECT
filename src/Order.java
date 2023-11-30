@@ -95,6 +95,7 @@ public class Order {
    // hiển thị chi tiết từng sản phẩm có trong đơn hàng
     public void displayOrderDetail(){
         System.out.println("Khach hang:"+customer.getName());
+        System.out.println("--------------------------------");
         System.out.println("Order Detail:"
                 + "\nOrder code:"+generateOrderCode());
         for(int i=0;i<itemCount;i++){
@@ -103,19 +104,25 @@ public class Order {
         }
         System.out.println("Total Cost:"+calculateTotalCost());
     }
+    public void inputOrderItem(){
+        OrderItem odt=new OrderItem();
+        odt.input();
+        addOrderItem(odt);
+    }
     //menu
     public void showMenu(){
        
          while(true){
             displayOrderDetail();
-            System.out.println("1. Xoa san pham\n2. Sua san pham");
-            System.out.println("3. Xoa toan bo gio hang\n0.Quay lai trang mua hang ");
+            System.out.println("1.Them san pham\n2. Xoa san pham\n3. Sua san pham");
+            System.out.println("4. Xoa toan bo gio hang\n0.Quay lai trang mua hang ");
             System.out.print("Moi chon chuc nang: ");
             int n=Integer.parseInt(sc.nextLine());
             switch(n){
-                case 1: removeOrderItem();break;
-                case 2: editOrderItem();break;
-                case 3: deleteOrderItems();break;
+                case 1: inputOrderItem();break;
+                case 2: removeOrderItem();break;
+                case 3: editOrderItem();break;
+                case 4: deleteOrderItems();break;
                 case 0: return;
                 default: System.out.println("Sai cu phap");break;
             }

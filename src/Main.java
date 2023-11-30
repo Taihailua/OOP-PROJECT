@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         ListCustomer appCustomer = new ListCustomer();
         ListEmployee appEmployee = new ListEmployee();
         ImportStock appProduct = new  ImportStock();
