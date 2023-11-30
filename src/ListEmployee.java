@@ -1,11 +1,14 @@
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class ListEmployee {
@@ -50,7 +53,7 @@ public class ListEmployee {
 
     public void inputEmployee() {
         scanner.nextLine();
-        String idEmployee = getValidEmployeeIdInput("Nhập ID: ");
+        String idEmployee = generateEmployeeId();
         String name = getNonEmptyInput("Nhập tên: ");
         String phone = getValidPhoneNumberInput("Nhập số điện thoại: ");
         String address = getNonEmptyInput("Nhập địa chỉ: ");
@@ -64,19 +67,21 @@ public class ListEmployee {
 
     public void outputEmployee() {
         System.out.println("Danh sách nhân viên:");
-        System.out.println("_________________________________________________________________________________________________________________________________");
-        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n", "Mã NV", "Tên", "Số điện thoại", "Địa chỉ", "Email", "Chức vụ", "Luong");
-        System.out.println("_________________________________________________________________________________________________________________________________");
+        System.out.println("__________________________________________________________________________________________________________________________________");
+        System.out.printf("%-20s%-20s%-20s%-15s%-25s%-20s%-20s\n", "Mã NV", "Tên", "Số điện thoại", "Địa chỉ", "Email", "Chức vụ", "Luong (VND)");
+        System.out.println("__________________________________________________________________________________________________________________________________");
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
         for (Employee employee : employeeList) {
-            System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n",
+            String formattedSalary = numberFormat.format(employee.getSalary());
+            System.out.printf("%-20s%-20s%-20s%-15s%-25s%-20s%-20s\n",
                     employee.getIdEmployee(),
                     employee.getName(),
                     employee.getPhone(),
                     employee.getAddress(),
                     employee.getEmail(),
                     employee.getPosition(),
-                    employee.getSalary()); // Add the missing salary specifier
-            System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
+                    formattedSalary); // Add the missing salary specifier
+            System.out.println("----------------------------------------------------------------------------------------------------------------------------------");
         }
     }
 
@@ -241,9 +246,12 @@ public class ListEmployee {
             System.out.println("1. Xuất danh sách nhân viên");
             System.out.println("2. Thêm nhân viên");
             System.out.println("3. Xóa nhân viên theo ID");
-            System.out.println("4. Sửa thông tin nhân viên theo ID");
+            System.out.println("4. Sửa nhân viên theo ID");
             System.out.println("5. Tìm kiếm nhân viên theo ID");
-            System.out.println("6. Thống kê nhân viên có mức lương giảm dần");
+            System.out.println("6. Tìm kiếm nhân viên theo tên");
+            System.out.println("7. Thống kê nhân viên có mức lương giảm dần");
+            System.out.println("8. Xuất thông tin nhân viên có mức lương cao nhất");
+            System.out.println("9. Xuất danh sách nhân viên là Quản lý (QL)");
             System.out.println("0. Trở về");
             System.out.print("Nhập lựa chọn của bạn: ");
             choice = scanner.nextInt();
@@ -271,7 +279,19 @@ public class ListEmployee {
                     searchEmployeeById(searchId);
                     break;
                 case 6:
+                    scanner.nextLine(); // Dòng này để xử lý kí tự Enter còn lại sau khi nhập số
+                    System.out.print("Nhập tên nhân viên cần tìm kiếm: ");
+                    String searchName = scanner.nextLine();
+                    searchEmployeeByName(searchName);
+                    break;
+                case 7:
                     printSortedEmployees();
+                    break;
+                case 9:
+                    outputManagerEmployees();
+                    break;
+                case 8:
+                    printHighestSalaryEmployee();
                     break;
                 case 0:
                     System.out.println("Tạm biệt!");
@@ -285,4 +305,104 @@ public class ListEmployee {
     void loadFromFile() {
         employeeList = readFromFile();
     }
+
+    private String generateEmployeeId() {
+        // Tìm mã nhân viên lớn nhất hiện tại
+        int maxId = 0;
+        for (Employee employee : employeeList) {
+            String employeeId = employee.getIdEmployee();
+            int idNumber = Integer.parseInt(employeeId.substring(2)); // Lấy phần số từ mã nhân viên
+            if (idNumber > maxId) {
+                maxId = idNumber;
+            }
+        }
+
+        // Tạo mã nhân viên mới
+        int newId = maxId + 1;
+        return String.format("NV%03d", newId);
+    }
+
+    public void outputManagerEmployees() {
+        System.out.println("Danh sách nhân viên là Quản lý (QL):");
+        System.out.println("_________________________________________________________________________________________________________________________________");
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n", "Mã NV", "Tên", "Số điện thoại", "Địa chỉ", "Email", "Chức vụ", "Luong");
+        System.out.println("_________________________________________________________________________________________________________________________________");
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+
+        for (Employee employee : employeeList) {
+            if ("QL".equals(employee.getPosition())) {
+                String formattedSalary = numberFormat.format(employee.getSalary());
+                System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n",
+                        employee.getIdEmployee(),
+                        employee.getName(),
+                        employee.getPhone(),
+                        employee.getAddress(),
+                        employee.getEmail(),
+                        employee.getPosition(),
+                        formattedSalary); // Add the missing salary specifier
+                System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
+            }
+        }
+    }
+
+    public void searchEmployeeByName(String name) {
+        System.out.println("Danh sách nhân viên có tên giống với '" + name + "':");
+        System.out.println("_________________________________________________________________________________________________________________________________");
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n", "Mã NV", "Tên", "Số điện thoại", "Địa chỉ", "Email", "Chức vụ", "Luong");
+
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+
+        for (Employee employee : employeeList) {
+            if (employee.getName().toLowerCase().contains(name.toLowerCase())) {
+                String formattedSalary = numberFormat.format(employee.getSalary());
+                System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n",
+                        employee.getIdEmployee(),
+                        employee.getName(),
+                        employee.getPhone(),
+                        employee.getAddress(),
+                        employee.getEmail(),
+                        employee.getPosition(),
+                        formattedSalary);
+                System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
+            }
+        }
+    }
+
+    public void printHighestSalaryEmployee() {
+        if (employeeList.length == 0) {
+            System.out.println("Danh sách nhân viên trống.");
+            return;
+        }
+
+        // Tìm nhân viên có mức lương cao nhất
+        Employee highestSalaryEmployee = employeeList[0];
+        for (int i = 1; i < employeeList.length; i++) {
+            if (employeeList[i].getSalary() > highestSalaryEmployee.getSalary()) {
+                highestSalaryEmployee = employeeList[i];
+            }
+        }
+
+        // In thông tin nhân viên có mức lương cao nhất
+        System.out.println("Thông tin nhân viên có mức lương cao nhất:");
+        System.out.println("_________________________________________________________________________________________________________________________________");
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s\n", "Mã NV", "Tên", "Số điện thoại", "Địa chỉ", "Email", "Chức vụ", "Luong");
+        System.out.println("_________________________________________________________________________________________________________________________________");
+
+        // Tạo đối tượng NumberFormat với Locale.US để sử dụng dấu phẩy ngăn cách hàng nghìn
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
+
+        // Chuyển đổi giá trị salary thành chuỗi với định dạng số có dấu phẩy
+        String formattedSalary = numberFormat.format(highestSalaryEmployee.getSalary());
+
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s%-20s%-20s VND\n",
+                highestSalaryEmployee.getIdEmployee(),
+                highestSalaryEmployee.getName(),
+                highestSalaryEmployee.getPhone(),
+                highestSalaryEmployee.getAddress(),
+                highestSalaryEmployee.getEmail(),
+                highestSalaryEmployee.getPosition(),
+                formattedSalary);
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
+    }
+
 }

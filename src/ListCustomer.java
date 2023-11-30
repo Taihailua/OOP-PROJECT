@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -44,20 +45,19 @@ public class ListCustomer {
     }
 
     public void inputCustomer() {
-    scanner.nextLine();
-    String id = getNonEmptyInput("Nhập ID: ");
-    String name = getNonEmptyInput("Nhập tên: ");
-    String phone = getNonEmptyInput("Nhập số điện thoại: ");
-    String address = getNonEmptyInput("Nhập địa chỉ: ");
-    String email = getNonEmptyInput("Nhập email: ");
+        scanner.nextLine();
+        String id = generateCustomerId();
+        String name = getNonEmptyInput("Nhập tên: ");
+        String phone = getNonEmptyInput("Nhập số điện thoại: ");
+        String address = getNonEmptyInput("Nhập địa chỉ: ");
+        String email = getNonEmptyInput("Nhập email: ");
 
-    // Tạo đối tượng Customer bằng cách sử dụng constructor với tham số
-    Customer newCustomer = new Customer(id, name, phone, address, email);
+        // Tạo đối tượng Customer bằng cách sử dụng constructor với tham số
+        Customer newCustomer = new Customer(id, name, phone, address, email);
 
-    // Thêm khách hàng vào mảng hoặc danh sách khách hàng của bạn
-    addCustomerToArray(newCustomer);
-}
-
+        // Thêm khách hàng vào mảng hoặc danh sách khách hàng của bạn
+        addCustomerToArray(newCustomer);
+    }
 
     public void outputCustomer() {
         System.out.println("Danh sách khách hàng:");
@@ -136,7 +136,6 @@ public class ListCustomer {
         int index = findCustomerIndexById(customerId);
 
         if (index != -1) {
-            // Tìm thấy khách hàng
             System.out.println("Thông tin khách hàng có mã " + customerId + ":");
             System.out.println(customerList[index]);
         } else {
@@ -149,10 +148,11 @@ public class ListCustomer {
         do {
             System.out.println("==== MENU KHACH HANG ====");
             System.out.println("1. Xuất danh sách khách hàng");
-            System.out.println("2. Thêm khách hàng");
-            System.out.println("3. Xóa khách hàng");
-            System.out.println("4. Sửa thông tin khách hàng");
+            System.out.println("2. Thêm khách hàng ");
+            System.out.println("3. Xóa khách hàng theo ID");
+            System.out.println("4. Sửa khách hàng theo ID");
             System.out.println("5. Tìm kiếm khách hàng theo ID");
+            System.out.println("6. Tìm kiếm khách hàng theo tên");
             System.out.println("0. Trở về.");
             System.out.print("Nhập lựa chọn của bạn: ");
             choice = scanner.nextInt();
@@ -179,6 +179,13 @@ public class ListCustomer {
                     String searchId = scanner.next();
                     searchCustomerById(searchId);
                     break;
+                case 6:
+                    scanner.nextLine(); // Xử lý kí tự Enter còn lại sau khi nhập số
+                    System.out.print("Nhập tên khách hàng cần tìm kiếm: ");
+                    String searchName = scanner.nextLine();
+                    searchCustomerByName(searchName);
+                    break;
+
                 case 0:
                     System.out.println("Trở về thành công!");
                     break;
@@ -203,6 +210,39 @@ public class ListCustomer {
         } while (input.isEmpty());
         return input;
     }
-    
-    
+
+    private String generateCustomerId() {
+        // Tìm mã khách hàng lớn nhất hiện tại
+        int maxId = 0;
+        for (Customer customer : customerList) {
+            String customerId = customer.getIdCustomer();
+            int idNumber = Integer.parseInt(customerId.substring(2)); // Lấy phần số từ mã khách hàng
+            if (idNumber > maxId) {
+                maxId = idNumber;
+            }
+        }
+
+        // Tạo mã khách hàng mới
+        int newId = maxId + 1;
+        return String.format("KH%03d", newId);
+    }
+
+    public void searchCustomerByName(String name) {
+        System.out.println("Danh sách khách hàng có tên giống với '" + name + "':");
+        System.out.println("__________________________________________________________________________________________________");
+        System.out.printf("%-20s%-20s%-20s%-20s%-20s\n", "Mã KH", "Tên", "Số điện thoại", "Địa chỉ", "Email");
+        System.out.println("__________________________________________________________________________________________________");
+        for (Customer customer : customerList) {
+            if (customer.getName().toLowerCase().contains(name.toLowerCase())) {
+                System.out.printf("%-20s%-20s%-20s%-20s%-20s\n",
+                        customer.getIdCustomer(),
+                        customer.getName(),
+                        customer.getPhone(),
+                        customer.getAddress(),
+                        customer.getEmail());
+                System.out.println("--------------------------------------------------------------------------------------------------");
+            }
+        }
+    }
+
 }

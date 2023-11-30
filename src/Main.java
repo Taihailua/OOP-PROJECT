@@ -6,10 +6,10 @@ public class Main {
 
         ListCustomer appCustomer = new ListCustomer();
         ListEmployee appEmployee = new ListEmployee();
+        ImportStock appProduct = new  ImportStock();
 
         // Thêm dữ liệu khách hàng ban đầu
         addInitialCustomerData(appCustomer);
-
         // Thêm dữ liệu nhân viên ban đầu
         addInitialEmployeeData(appEmployee);
 
@@ -48,12 +48,13 @@ public class Main {
                             appEmployee.showMenu();
                             break;
                         case 3:
-                            // Thực hiện chức năng quản lý sản phẩm
-                            // Ví dụ: appProduct.showMenu();
+                            appProduct.showMenu();
+                   
                             break;
                         case 0:
                             System.out.println("Trở về thành công!");
                             break;
+                                    
                         default:
                             System.out.println("Lựa chọn không hợp lệ. Hãy chọn lại.");
                     }
@@ -85,11 +86,11 @@ public class Main {
 
     // Tạo dữ liệu nhân viên ban đầu
     private static void addInitialEmployeeData(ListEmployee appEmployee) {
-        Employee emp1 = new Employee("NV001", "Pham Van Kiet", "0976204872", "TPHCM", "pvk210504@gmail.com", "QL", 2000000);
-        Employee emp2 = new Employee("NV002", "Truong Tan A", "0987654321", "Ha Noi", "nguyenvana@gmail.com", "NV", 1000000);
-        Employee emp3 = new Employee("NV003", "L B", "0901122334", "Da Nang", "tranthib@gmail.com", "NV", 1200000);
-        Employee emp4 = new Employee("NV004", "Tran Thi C", "0901122339", "Can Tho", "levanc@gmail.com", "NV", 800000);
-        Employee emp5 = new Employee("NV005", "Nguyen Van D", "09011496566", "Ca Mau", "truongtand@gmail.com", "NV", 600000);
+        Employee emp1 = new Employee("NV001", "Pham Van Kiet", "0976204872", "TPHCM", "pvk210504@gmail.com", "QL", 40000000);
+        Employee emp2 = new Employee("NV002", "Truong Tan A", "0987654321", "Ha Noi", "nguyenvana@gmail.com", "NV", 10000000);
+        Employee emp3 = new Employee("NV003", "Le Thi B", "0901122334", "Da Nang", "tranthib@gmail.com", "NV", 12000000);
+        Employee emp4 = new Employee("NV004", "Tran Thi C", "0901122339", "Can Tho", "levanc@gmail.com", "NV", 8000000);
+        Employee emp5 = new Employee("NV005", "Nguyen Van D", "09011496566", "Ca Mau", "truongtand@gmail.com", "NV", 6000000);
 
         appEmployee.addEmployeeToArray(emp1);
         appEmployee.addEmployeeToArray(emp2);
