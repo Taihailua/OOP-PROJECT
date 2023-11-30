@@ -7,7 +7,7 @@ public class Order {
     private OrderItem orderItems[] = new OrderItem[0];
     private int itemCount=0;// số lượng mục trong đơn hàng
     private static int nextOrderCode=1;
-   private Customer customer;
+    private Customer customer=new Customer();
    
     
     public Order() {
@@ -96,32 +96,50 @@ public class Order {
         System.out.println("--------------------------------");
         System.out.println("Order Detail:"
                 + "\nOrder code:"+generateOrderCode());
+        System.out.println(String.format("|%-3s|%-10s|%-15s|%-3s|%-14s|", "STT","PhoneID","Name","Amount","Price"));
         for(int i=0;i<itemCount;i++){
-            System.out.print("Items "+i+" ");
-            orderItems[i].output();
+            System.out.println(String.format("|%-3d|%-10s|%-15s|%-3s|%-14d|",
+            (i+1),
+            orderItems[i].getProduct().getPhoneID(),
+            orderItems[i].getProduct().getName(),
+            orderItems[i].getAmount(),
+            orderItems[i].getTotalCost()));
         }
         System.out.println("Total Cost:"+calculateTotalCost());
     }
-    public void inputOrderItem(){
-        OrderItem odt=new OrderItem();
-        odt.input();
+    public void inputOrderItem(ImportStock appProduct){
+        System.out.print("Nhap ma san pham: ");
+        int pos=appProduct.findID(sc.nextLine());
+        if(pos==-1){
+            System.out.println("Khong tim thay san pham");
+            return;
+        }
+        System.out.print("Nhap so luong san pham: ");
+        int amount=Integer.parseInt(sc.nextLine());
+        if(amount<=0){
+            System.out.println("So luong khong dung");
+            return;
+        }
+        OrderItem odt=new OrderItem(appProduct.products[pos],amount);
         addOrderItem(odt);
     }
     //menu
     public void showMenu(){
-              ImportStock appProduct = new ImportStock();
-              appProduct.output();
-         while(true){
-            displayOrderDetail();
+        this.customer.inputCustomerInfo();
+        sc.nextLine();
+        ImportStock appProduct = new ImportStock();
+        appProduct.output();
+        while(true){
             System.out.println("1.Them san pham\n2. Xoa san pham\n3. Sua san pham");
-            System.out.println("4. Xoa toan bo gio hang\n0.Quay lai trang mua hang ");
+            System.out.println("4. Xoa toan bo gio hang\n5. Hien thi gio hang\n0.Quay lai trang mua hang ");
             System.out.print("Moi chon chuc nang: ");
             int n=Integer.parseInt(sc.nextLine());
             switch(n){
-                case 1: inputOrderItem();break;
+                case 1: inputOrderItem(appProduct);break;
                 case 2: removeOrderItem();break;
                 case 3: editOrderItem();break;
                 case 4: deleteOrderItems();break;
+                case 5: displayOrderDetail();break;
                 case 0: return;
                 default: System.out.println("Sai cu phap");break;
             }

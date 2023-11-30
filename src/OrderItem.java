@@ -34,18 +34,16 @@ public class OrderItem {
     public int getTotalCost(){
         return product.getPrice()*amount;
     }
-   public void input(){
-       Phone phone=new Phone();
-       System.out.print("Nhap ten san pham muon them vao gio hang:");
-       phone.setName(sc.nextLine());
-       setProduct(phone);
-       System.out.print("\nNhap so luong:");
-       setAmount(Integer.parseInt(sc.nextLine()));
-       getTotalCost();
-   }
+//   public void input(){
+//       System.out.print("Nhap ma san pham muon them vao gio hang:");
+//       findID
+//       System.out.print("\nNhap so luong:");
+//       setAmount(Integer.parseInt(sc.nextLine()));
+//       getTotalCost();
+//   }
     @Override
     public String toString() {
-        return product + "\namount=" + amount + "\t Cost="+getTotalCost();
+        return product + "|amount=" + amount + "\t Cost="+getTotalCost();
     }
     public void output(){
         System.out.println(toString());
