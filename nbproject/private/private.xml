@@ -6,10 +6,16 @@
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Manufacturer.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Main.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/PaymentGateway.java</file>
+            <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/OrderItem.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Customer.java</file>
+            <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Report.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/ExtendedWarranty.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/ListEmployee.java</file>
+            <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Phone.java</file>
+            <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/ProductCategory.java</file>
+            <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/ProductWarranty.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Invoice.java</file>
+            <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Warranty.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/sale.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Order.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/FileIO.java</file>
@@ -17,6 +23,8 @@
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/ImportStock.java</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/data/dataCustomer.txt</file>
             <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/ListCustomer.java</file>
+            <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Payment.java</file>
+            <file>file:/C:/Users/KIET/Desktop/OOP-DEMO/src/Person.java</file>
         </group>
     </open-files>
 </project-private>

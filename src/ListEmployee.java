@@ -242,7 +242,8 @@ public class ListEmployee {
     public void showMenu() {
         int choice;
         do {
-            System.out.println("==== MENU NHAN VIEN ====");
+            System.out.println("_________________________________________________________ ");
+            System.out.println("___________________ QUAN LY NHAN VIEN ___________________ ");
             System.out.println("1. Xuất danh sách nhân viên");
             System.out.println("2. Thêm nhân viên");
             System.out.println("3. Xóa nhân viên theo ID");

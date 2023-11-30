@@ -1,4 +1,89 @@
 DT1
+0
+0
+0
+0
+0
+0
+0
+0
+DT2
+Google Pixel 6
+GP6
+14000000
+2
+Man hinh OLED, 120Hz
+Camera chinh 50MP, Night Sight
+Google
+My
++15555678
+100
+DT3
+Huawei P40 Pro
+HWP40
+18000000
+2
+Man hinh OLED, 90Hz
+Camera chinh 50MP, 5x optical zoom
+Huawei
+Trung Quoc
++819012345678
+50
+DT4
+KKK
+KKK
+99999
+1
+KKK
+SamSung
+Hoc Mon
+09762048788
+5000
+DT5
+LG Velvet
+LGV
+10000000
+2
+Man hinh P-OLED, 60Hz
+Snapdragon 765G, Dual Screen support
+LG
+Han Quoc
++821054328765
+100
+DT6
+Motorola Edge+
+MTEP
+17000000
+2
+Man hinh AMOLED, 90Hz
+Snapdragon 865, 108MP camera
+Motorola
+My
++819034567890
+200
+DT7
+Nokia 9 PureView
+NKPV
+9000000
+2
+Man hinh P-OLED, 60Hz
+Camera chinh 5x 12MP
+Nokia
+Phan Lan
++15558765
+150
+DT8
+OnePlus 9
+OP9
+12000000
+2
+Man hinh Fluid AMOLED, 120Hz
+Snapdragon 888, 5G
+OnePlus
+Trung Quoc
++8613845678901
+150
+DT9
 Samsung Galaxy S21
 SGS21
 15000000
@@ -10,29 +95,19 @@ Samsung
 Han Quoc
 +15551234
 100
-DT2
-iPhone 13 Pro
-IP13P
-20000000
-2
-Man hinh ProMotion, 120Hz
-Bo ba camera sieu rong, chinh, telephoto
-Apple
-My
-+819056781234
-50
-DT3
-OnePlus 9
-OP9
-12000000
-2
-Man hinh Fluid AMOLED, 120Hz
-Snapdragon 888, 5G
-OnePlus
-Trung Quoc
-+8613845678901
+DT10
+Sony Xperia 1 III
+SXP1III
+16000000
+3
+Man hinh 4K HDR OLED, 120Hz
+Camera chinh 12MP, 3x optical zoom
+Chong nuoc IP68
+Sony
+Nhat Ban
++8613678901234
 150
-DT4
+DT11
 Xiaomi Mi 11
 XM11
 13000000
@@ -45,81 +120,14 @@ Xiaomi
 Trung Quoc
 +821098765432
 200
-DT5
-Google Pixel 6
-GP6
-14000000
+DT12
+iPhone 13 Pro
+IP13P
+20000000
 2
-Man hinh OLED, 120Hz
-Camera chinh 50MP, Night Sight
-Google
+Man hinh ProMotion, 120Hz
+Bo ba camera sieu rong, chinh, telephoto
+Apple
 My
-+15555678
-100
-DT6
-Huawei P40 Pro
-HWP40
-18000000
-2
-Man hinh OLED, 90Hz
-Camera chinh 50MP, 5x optical zoom
-Huawei
-Trung Quoc
-+819012345678
++819056781234
 50
-DT7
-Sony Xperia 1 III
-SXP1III
-16000000
-3
-Man hinh 4K HDR OLED, 120Hz
-Camera chinh 12MP, 3x optical zoom
-Chong nuoc IP68
-Sony
-Nhat Ban
-+8613678901234
-150
-DT8
-LG Velvet
-LGV
-10000000
-2
-Man hinh P-OLED, 60Hz
-Snapdragon 765G, Dual Screen support
-LG
-Han Quoc
-+821054328765
-100
-DT9
-Nokia 9 PureView
-NKPV
-9000000
-2
-Man hinh P-OLED, 60Hz
-Camera chinh 5x 12MP
-Nokia
-Phan Lan
-+15558765
-150
-DT10
-Motorola Edge+
-MTEP
-17000000
-2
-Man hinh AMOLED, 90Hz
-Snapdragon 865, 108MP camera
-Motorola
-My
-+819034567890
-200
-DT11
-Dien thoai cua Kiet
-0
-99000000
-2
-Dien thoai cua Kiet bao xin xo
-Dien thoai cuc gach
-Dien thoai nha lam
-Hoc Mob
-0976204872
-0

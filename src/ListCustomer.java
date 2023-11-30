@@ -146,7 +146,8 @@ public class ListCustomer {
     public void showMenu() {
         int choice;
         do {
-            System.out.println("==== MENU KHACH HANG ====");
+            System.out.println("__________________________________________________________ ");
+            System.out.println("___________________ QUAN LY KHACH HANG ___________________ ");
             System.out.println("1. Xuất danh sách khách hàng");
             System.out.println("2. Thêm khách hàng ");
             System.out.println("3. Xóa khách hàng theo ID");

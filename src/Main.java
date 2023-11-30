@@ -15,8 +15,9 @@ public class Main {
 
         int mainChoice;
     do {
-        System.out.println("==== Cua hang dien thoai ====");
-        System.out.println("1. Chức năng Khách Hàng");
+        System.out.println("__________________________________________________________");
+        System.out.println("__/__/__/__/__/__/_CUA HANG DIEN THOAI __/__/__/__/__/__/");
+        System.out.println("1. Chức năng Khach hang");
         System.out.println("2. Chức năng Admin");
         System.out.println("0. Thoát");
         System.out.print("Nhập lựa chọn của bạn: ");
@@ -32,7 +33,8 @@ public class Main {
                 // Thực hiện chức năng của admin
                 int adminChoice;
                 do {
-                    System.out.println("==== Chức năng admin ====");
+                    System.out.println("_______________________________________________________");
+                    System.out.println("___________________ Chức năng admin ___________________");
                     System.out.println("1. Quản lý khách hàng");
                     System.out.println("2. Quản lý nhân viên");
                     System.out.println("3. Quản lý sản phẩm");
