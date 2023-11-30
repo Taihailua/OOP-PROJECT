@@ -17,16 +17,16 @@ public class Main {
     do {
         System.out.println("__________________________________________________________");
         System.out.println("__/__/__/__/__/__/_CUA HANG DIEN THOAI __/__/__/__/__/__/");
-        System.out.println("1. Chức năng Khach hang");
-        System.out.println("2. Chức năng Admin");
-        System.out.println("0. Thoát");
-        System.out.print("Nhập lựa chọn của bạn: ");
+        System.out.println("1. Chuc nang Khach hang");
+        System.out.println("2. Chuc nang Admin");
+        System.out.println("0. Thoat");
+        System.out.print("Nhap lua chon cua ban: ");
         mainChoice = scanner.nextInt();
 
         switch (mainChoice) {
             case 1:
                 // Thực hiện chức năng của khách hàng
-                System.out.println("Chào mừng bạn là khách hàng!");
+                System.out.println("Chao mung khach hang!");
                 // Ví dụ: appCustomer.showMenu();
                 break;
             case 2:
@@ -34,12 +34,12 @@ public class Main {
                 int adminChoice;
                 do {
                     System.out.println("_______________________________________________________");
-                    System.out.println("___________________ Chức năng admin ___________________");
-                    System.out.println("1. Quản lý khách hàng");
-                    System.out.println("2. Quản lý nhân viên");
-                    System.out.println("3. Quản lý sản phẩm");
-                    System.out.println("0. Thoát");
-                    System.out.print("Nhập lựa chọn của bạn: ");
+                    System.out.println("___________________ Chuc nang admin ___________________");
+                    System.out.println("1. Quan ly khach hang");
+                    System.out.println("2. Quan ly nhan vien");
+                    System.out.println("3. Quan ly san pham");
+                    System.out.println("0. Thoat");
+                    System.out.print("Nhap lua chon cua ban: ");
                     adminChoice = scanner.nextInt();
 
                     switch (adminChoice) {
@@ -54,19 +54,19 @@ public class Main {
                    
                             break;
                         case 0:
-                            System.out.println("Trở về thành công!");
+                            System.out.println("Tro ve thanh cong!");
                             break;
                                     
                         default:
-                            System.out.println("Lựa chọn không hợp lệ. Hãy chọn lại.");
+                            System.out.println("Lua chon khong hop le. Hay chon lai.");
                     }
                 } while (adminChoice != 0);
                 break;
             case 0:
-                System.out.println("Tạm biệt!");
+                System.out.println("Tam Biet!");
                 break;
             default:
-                System.out.println("Lựa chọn không hợp lệ. Hãy chọn lại.");
+                System.out.println("Lua chon khong hop le. Hay chon lai.");
         }
     } while (mainChoice != 0);
     }

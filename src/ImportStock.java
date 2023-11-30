@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ImportStock implements FileIO {
 
-    private Phone[] products = new Phone[0];
+    Phone[] products = new Phone[0];
     private int[] amount = new int[0];
     private int len = 0;
 //    private Employee receiver;
@@ -299,18 +299,10 @@ public class ImportStock implements FileIO {
             System.out.print("Moi chon chuc nang: ");
             int n = Integer.parseInt(sc.nextLine());
             switch (n) {
-                case 1:
-                    output();
-                    break;
-                case 2:
-                    add();
-                    break;
-                case 3:
-                    edit();
-                    break;
-                case 4:
-                    remove();
-                    break;
+                case 1: output(); break;
+                case 2: add(); break;
+                case 3: edit(); break;
+                case 4: remove(); break;
                 case 5:
                     sortByPriceDescending(); // Thực hiện sắp xếp
                     output(); // Hiển thị danh sách đã sắp xếp
