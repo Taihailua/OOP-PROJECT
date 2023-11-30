@@ -3,8 +3,6 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Order {
-
-   
     static Scanner sc= new Scanner(System.in);
     private OrderItem orderItems[] = new OrderItem[0];
     private int itemCount=0;// số lượng mục trong đơn hàng
@@ -111,7 +109,8 @@ public class Order {
     }
     //menu
     public void showMenu(){
-       
+              ImportStock appProduct = new ImportStock();
+              appProduct.output();
          while(true){
             displayOrderDetail();
             System.out.println("1.Them san pham\n2. Xoa san pham\n3. Sua san pham");
@@ -128,19 +127,19 @@ public class Order {
             }
         }
     }
-    public static void main(String[] args) {
-        ImportStock DS=new ImportStock();
-        OrderItem odt=new OrderItem(DS.products[0],12);
-        OrderItem odt3=new OrderItem(DS.products[4],12);
-        OrderItem odt1=new OrderItem(DS.products[1],12);
-        OrderItem odt2=new OrderItem(DS.products[2],12);
-        Customer cs2=new Customer("KH2","Minh Vuong","0377658957","8a Phan Van tri","MV@gmail.com");
-        Order od=new Order(cs2);
-        od.addOrderItem(odt);
-        od.addOrderItem(odt1);
-        od.addOrderItem(odt2);
-        od.addOrderItem(odt3);
-        od.showMenu();
-    }
+//    public static void main(String[] args) {
+//        ImportStock DS=new ImportStock();
+//        OrderItem odt=new OrderItem(DS.products[0],12);
+//        OrderItem odt3=new OrderItem(DS.products[4],12);
+//        OrderItem odt1=new OrderItem(DS.products[1],12);
+//        OrderItem odt2=new OrderItem(DS.products[2],12);
+//        Customer cs2=new Customer("KH2","Minh Vuong","0377658957","8a Phan Van tri","MV@gmail.com");
+//        Order od=new Order(cs2);
+//        od.addOrderItem(odt);
+//        od.addOrderItem(odt1);
+//        od.addOrderItem(odt2);
+//        od.addOrderItem(odt3);
+//        od.showMenu();
+//    }
 }
 

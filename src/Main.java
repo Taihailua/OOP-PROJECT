@@ -1,11 +1,26 @@
+
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ListCustomer appCustomer = new ListCustomer();
         ListEmployee appEmployee = new ListEmployee();
-        ImportStock appProduct = new  ImportStock();
+        ImportStock appProduct = new ImportStock();
+
+        Order appOrder = new Order();
+
+        OrderItem odt = new OrderItem(appProduct.products[0], 12);
+        OrderItem odt3 = new OrderItem(appProduct.products[4], 12);
+        OrderItem odt1 = new OrderItem(appProduct.products[1], 12);
+        OrderItem odt2 = new OrderItem(appProduct.products[2], 12);
+        Customer cs2=new Customer("KH2","Minh Vuong","0377658957","8a Phan Van tri","MV@gmail.com");
+        Order od=new Order(cs2);
+        od.addOrderItem(odt);
+        od.addOrderItem(odt1);
+        od.addOrderItem(odt2);
+        od.addOrderItem(odt3);
 
         // Thêm dữ liệu khách hàng ban đầu
         addInitialCustomerData(appCustomer);
@@ -13,61 +28,82 @@ public class Main {
         addInitialEmployeeData(appEmployee);
 
         int mainChoice;
-    do {
-        System.out.println("__________________________________________________________");
-        System.out.println("__/__/__/__/__/__/_CUA HANG DIEN THOAI __/__/__/__/__/__/");
-        System.out.println("1. Chuc nang Khach hang");
-        System.out.println("2. Chuc nang Admin");
-        System.out.println("0. Thoat");
-        System.out.print("Nhap lua chon cua ban: ");
-        mainChoice = scanner.nextInt();
+        do {
+            System.out.println("__________________________________________________________");
+            System.out.println("__/__/__/__/__/__/_CUA HANG DIEN THOAI __/__/__/__/__/__/");
+            System.out.println("1. Chuc nang Khach hang");
+            System.out.println("2. Chuc nang Admin");
+            System.out.println("0. Thoat");
+            System.out.print("Nhap lua chon cua ban: ");
+            mainChoice = scanner.nextInt();
 
-        switch (mainChoice) {
-            case 1:
-                // Thực hiện chức năng của khách hàng
-                System.out.println("Chao mung khach hang!");
-                // Ví dụ: appCustomer.showMenu();
-                break;
-            case 2:
-                // Thực hiện chức năng của admin
-                int adminChoice;
-                do {
-                    System.out.println("_______________________________________________________");
-                    System.out.println("___________________ Chuc nang admin ___________________");
-                    System.out.println("1. Quan ly khach hang");
-                    System.out.println("2. Quan ly nhan vien");
-                    System.out.println("3. Quan ly san pham");
-                    System.out.println("0. Thoat");
-                    System.out.print("Nhap lua chon cua ban: ");
-                    adminChoice = scanner.nextInt();
+            switch (mainChoice) {
+                case 1:
+                    // Thực hiện chức năng của khách hàng
+                    int customerChoice;
+                    do {
+                        System.out.println("____________________________________________________________");
+                        System.out.println("___________________ Chuc nang khach hang ___________________");
+                        System.out.println("1. Quan ly gio hang");
+                        System.out.println("0. Thoat");
+                        System.out.print("Nhap lua chon cua ban: ");
+                        customerChoice = scanner.nextInt();
 
-                    switch (adminChoice) {
-                        case 1:
-                            appCustomer.showMenu();
-                            break;
-                        case 2:
-                            appEmployee.showMenu();
-                            break;
-                        case 3:
-                            appProduct.showMenu();
-                   
-                            break;
-                        case 0:
-                            System.out.println("Tro ve thanh cong!");
-                            break;
-                                    
-                        default:
-                            System.out.println("Lua chon khong hop le. Hay chon lai.");
-                    }
-                } while (adminChoice != 0);
-                break;
-            case 0:
-                System.out.println("Tam Biet!");
-                break;
-            default:
-                System.out.println("Lua chon khong hop le. Hay chon lai.");
-        }
-    } while (mainChoice != 0);
+                        switch (customerChoice) {
+                            case 1:
+                                od.showMenu();
+                                break;
+
+                            default:
+                                System.out.println("Lua chon khong hop le. Hay chon lai.");
+                        }
+                    } while (customerChoice != 0);
+                    break;
+                case 2:
+                    // Thực hiện chức năng của admin
+                    int adminChoice;
+                    do {
+                        System.out.println("_______________________________________________________");
+                        System.out.println("___________________ Chuc nang admin ___________________");
+                        System.out.println("1. Quan ly khach hang");
+                        System.out.println("2. Quan ly nhan vien");
+                        System.out.println("3. Quan ly san pham");
+                        System.out.println("4. Quan ly hoa don (Report)");
+                        System.out.println("0. Thoat");
+                        System.out.print("Nhap lua chon cua ban: ");
+                        adminChoice = scanner.nextInt();
+
+                        switch (adminChoice) {
+                            case 1:
+                                appCustomer.showMenu();
+                                break;
+                            case 2:
+                                appEmployee.showMenu();
+                                break;
+                            case 3:
+                                appProduct.showMenu();
+
+                                break;
+                            case 4:
+                                appOrder.showMenu();
+
+                                break;
+                            case 0:
+                                System.out.println("Tro ve thanh cong!");
+                                break;
+
+                            default:
+                                System.out.println("Lua chon khong hop le. Hay chon lai.");
+                        }
+                    } while (adminChoice != 0);
+                    break;
+                case 0:
+                    System.out.println("Tam Biet!");
+                    break;
+                default:
+                    System.out.println("Lua chon khong hop le. Hay chon lai.");
+            }
+        } while (mainChoice != 0);
     }
 
     // Tạo dữ liệu khách hàng ban đầu
