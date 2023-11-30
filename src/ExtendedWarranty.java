@@ -4,8 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
+
 public class ExtendedWarranty extends Warranty {
     static Scanner sc = new Scanner(System.in);
+
     @Override
     public void calculateRemainingWarranty() {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -36,12 +38,11 @@ public class ExtendedWarranty extends Warranty {
             setHanketThuc(newDateString);
             setHanBatDau(newActivateDateString);
             System.out.println("Gia han bao hanh thanh cong !");
-            System.out.println("Da gia han them " + extendedPeriod +" "+ c);
+            System.out.println("Da gia han them " + extendedPeriod + " " + c);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
 
     @Override
     public void isWarrantyValid() {
@@ -51,8 +52,9 @@ public class ExtendedWarranty extends Warranty {
         try {
             Date endDate = dateFormat.parse(getHanKetThuc());
             Date currentDate = new Date();
-            long diffInMillies =endDate.getTime() - currentDate.getTime();
-            long diff = java.util.concurrent.TimeUnit.DAYS.convert(diffInMillies, java.util.concurrent.TimeUnit.MILLISECONDS);
+            long diffInMillies = endDate.getTime() - currentDate.getTime();
+            long diff = java.util.concurrent.TimeUnit.DAYS.convert(diffInMillies,
+                    java.util.concurrent.TimeUnit.MILLISECONDS);
             if (diff <= 0)
                 System.out.println("Da het han bao hanh");
             else {

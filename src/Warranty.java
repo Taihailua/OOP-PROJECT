@@ -1,18 +1,18 @@
 import java.util.Scanner;
 import java.util.Calendar;
+
 public abstract class Warranty {
-    private String productSerialNumber; 
+    private String productSerialNumber;
     private String productModel;
-    private Phone product=new Phone();
-    private String description; 
+    private Phone product = new Phone();
+    private String description;
     private String tenKhachHang;
     private String hanBatDau;
     private String hanKetThuc;
     static Scanner sc = new Scanner(System.in);
 
-
-
-    public Warranty(Phone products, String description, String tenKhachHang, String hanBatDau, String hanKetThuc, String productSerialNumber) {
+    public Warranty(Phone products, String description, String tenKhachHang, String hanBatDau, String hanKetThuc,
+            String productSerialNumber) {
         this.product = product;
         this.productSerialNumber = productSerialNumber;
         this.productModel = productModel;
@@ -22,9 +22,8 @@ public abstract class Warranty {
         this.hanKetThuc = hanKetThuc;
     }
 
-    public Warranty () {
+    public Warranty() {
     }
-
 
     public void setProduct(Phone product) {
         this.product = product;
@@ -45,12 +44,10 @@ public abstract class Warranty {
     public String getProductModel() {
         return productModel;
     }
+
     public void setProductModel(String productModel) {
         this.productModel = productModel;
     }
-
-
-
 
     public void setDescription(String description) {
 
@@ -107,14 +104,17 @@ public abstract class Warranty {
 
     @Override
     public String toString() {
-        return  "Ten Dien Thoai: " + product.getName() + "\t\tSo series: " + productSerialNumber + "\t\tModel: " + getProductModel() + "\t\tMo Ta loi: " + description + "\nTen Khach Hang: " + tenKhachHang + "\t\tNgay Kich Hoat BH: " + hanBatDau +"\t\tNgay het han BH: " + hanKetThuc ;
+        return "Ten Dien Thoai: " + product.getName() + "\t\tSo series: " + productSerialNumber + "\t\tModel: "
+                + getProductModel() + "\t\tMo Ta loi: " + description + "\nTen Khach Hang: " + tenKhachHang
+                + "\t\tNgay Kich Hoat BH: " + hanBatDau + "\t\tNgay het han BH: " + hanKetThuc;
     }
+
     public abstract void calculateRemainingWarranty();
- 
+
     public abstract void isWarrantyValid();
 
     public abstract void printWarrantyDetails();
-    
+
     public void output() {
         System.out.println(toString());
     }

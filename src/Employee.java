@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Employee extends Person {
-      private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
     private String idEmployee;
     private String position;
     private long salary;
@@ -9,7 +9,8 @@ public class Employee extends Person {
     public Employee() {
     }
 
-    public Employee(String idEmployee, String name, String phone, String address, String email, String position, long salary) {
+    public Employee(String idEmployee, String name, String phone, String address, String email, String position,
+            long salary) {
         super(name, phone, address, email);
         this.idEmployee = idEmployee;
         this.position = position;

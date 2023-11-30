@@ -10,12 +10,12 @@ public class Sale {
     public Sale() {
     }
 
-    public Sale(String phoneID, String description, Date startDate, Date endDate,int priceSale) {
+    public Sale(String phoneID, String description, Date startDate, Date endDate, int priceSale) {
         this.phoneID = phoneID;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.priceSale=priceSale;
+        this.priceSale = priceSale;
     }
 
     public Date getStartDate() {
@@ -51,7 +51,7 @@ public class Sale {
     }
 
     public void removeSale() {
-        // xoá khuyến mãi 
+        // xoá khuyến mãi
         System.out.println("Đã gỡ bỏ khuyến mãi cho sản phẩm có ID: " + phoneID);
     }
 }

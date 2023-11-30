@@ -15,8 +15,8 @@ public class Main {
         OrderItem odt3 = new OrderItem(appProduct.products[4], 12);
         OrderItem odt1 = new OrderItem(appProduct.products[1], 12);
         OrderItem odt2 = new OrderItem(appProduct.products[2], 12);
-        Customer cs2=new Customer("KH2","Minh Vuong","0377658957","8a Phan Van tri","MV@gmail.com");
-        Order od=new Order(cs2);
+        Customer cs2 = new Customer("KH2", "Minh Vuong", "0377658957", "8a Phan Van tri", "MV@gmail.com");
+        Order od = new Order(cs2);
         od.addOrderItem(odt);
         od.addOrderItem(odt1);
         od.addOrderItem(odt2);
@@ -48,12 +48,10 @@ public class Main {
                         System.out.println("0. Thoat");
                         System.out.print("Nhap lua chon cua ban: ");
                         customerChoice = scanner.nextInt();
-
                         switch (customerChoice) {
                             case 1:
                                 od.showMenu();
                                 break;
-
                             default:
                                 System.out.println("Lua chon khong hop le. Hay chon lai.");
                         }
@@ -123,11 +121,15 @@ public class Main {
 
     // Tạo dữ liệu nhân viên ban đầu
     private static void addInitialEmployeeData(ListEmployee appEmployee) {
-        Employee emp1 = new Employee("NV001", "Pham Van Kiet", "0976204872", "TPHCM", "pvk210504@gmail.com", "QL", 40000000);
-        Employee emp2 = new Employee("NV002", "Truong Tan A", "0987654321", "Ha Noi", "nguyenvana@gmail.com", "NV", 10000000);
-        Employee emp3 = new Employee("NV003", "Le Thi B", "0901122334", "Da Nang", "tranthib@gmail.com", "NV", 12000000);
+        Employee emp1 = new Employee("NV001", "Pham Van Kiet", "0976204872", "TPHCM", "pvk210504@gmail.com", "QL",
+                40000000);
+        Employee emp2 = new Employee("NV002", "Truong Tan A", "0987654321", "Ha Noi", "nguyenvana@gmail.com", "NV",
+                10000000);
+        Employee emp3 = new Employee("NV003", "Le Thi B", "0901122334", "Da Nang", "tranthib@gmail.com", "NV",
+                12000000);
         Employee emp4 = new Employee("NV004", "Tran Thi C", "0901122339", "Can Tho", "levanc@gmail.com", "NV", 8000000);
-        Employee emp5 = new Employee("NV005", "Nguyen Van D", "09011496566", "Ca Mau", "truongtand@gmail.com", "NV", 6000000);
+        Employee emp5 = new Employee("NV005", "Nguyen Van D", "09011496566", "Ca Mau", "truongtand@gmail.com", "NV",
+                6000000);
 
         appEmployee.addEmployeeToArray(emp1);
         appEmployee.addEmployeeToArray(emp2);

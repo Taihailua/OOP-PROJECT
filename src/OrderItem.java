@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class OrderItem {
     private Phone product;
     private int amount;
-    private Scanner sc=new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
+
     public OrderItem() {
     }
 
@@ -19,8 +20,7 @@ public class OrderItem {
     }
 
     public void setProduct(Phone product) {
-       
-        
+
         this.product = product;
     }
 
@@ -31,25 +31,28 @@ public class OrderItem {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    public int getTotalCost(){
-        return product.getPrice()*amount;
+
+    public int getTotalCost() {
+        return product.getPrice() * amount;
     }
-   public void input(){
-       Phone phone=new Phone();
-       System.out.print("Nhap ten san pham muon them vao gio hang:");
-       phone.setName(sc.nextLine());
-       setProduct(phone);
-       System.out.print("\nNhap so luong:");
-       setAmount(Integer.parseInt(sc.nextLine()));
-       getTotalCost();
-   }
+
+    public void input() {
+        Phone phone = new Phone();
+        System.out.print("Nhap ten san pham muon them vao gio hang:");
+        phone.setName(sc.nextLine());
+        setProduct(phone);
+        System.out.print("\nNhap so luong:");
+        setAmount(Integer.parseInt(sc.nextLine()));
+        getTotalCost();
+    }
+
     @Override
     public String toString() {
-        return product + "\namount=" + amount + "\t Cost="+getTotalCost();
+        return product + "\namount=" + amount + "\t Cost=" + getTotalCost();
     }
-    public void output(){
+
+    public void output() {
         System.out.println(toString());
     }
-  
+
 }
- 

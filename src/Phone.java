@@ -1,8 +1,8 @@
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
-public class Phone{
-    private String name,phoneID;
+public class Phone {
+    private String name, phoneID;
     private int price;
     private ProductCategory Category;
     private Manufacturer NSX;
@@ -10,7 +10,7 @@ public class Phone{
     public Phone() {
     }
 
-    public Phone(String name, String phoneID,int price, ProductCategory Category, Manufacturer NSX) {
+    public Phone(String name, String phoneID, int price, ProductCategory Category, Manufacturer NSX) {
         this.name = name;
         this.phoneID = phoneID;
         this.price = price;
@@ -37,7 +37,7 @@ public class Phone{
     public int getPrice() {
         return price;
     }
-    
+
     public String DecFormat(int number) {
         DecimalFormat decimalFormat = new DecimalFormat("#,###");
         return decimalFormat.format(number);
@@ -50,7 +50,7 @@ public class Phone{
     public ProductCategory getCategory() {
         return Category;
     }
-    
+
     public void setCategory(ProductCategory Category) {
         this.Category = Category;
     }
@@ -62,42 +62,43 @@ public class Phone{
     public void setNSX(Manufacturer NSX) {
         this.NSX = NSX;
     }
-    
-    public void input(){
-        Scanner sc=new Scanner(System.in);
+
+    public void input() {
+        Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ma dien thoai: ");
         setPhoneID(sc.nextLine());
         System.out.print("Nhap ten dien thoai: ");
         setName(sc.nextLine());
         System.out.print("Nhap gia: ");
         setPrice(Integer.parseInt(sc.nextLine()));
-        Category=new ProductCategory();
+        Category = new ProductCategory();
         Category.input();
-        NSX=new Manufacturer();
+        NSX = new Manufacturer();
         NSX.input();
     }
 
-    public void input(String phoneID){
+    public void input(String phoneID) {
         setPhoneID(phoneID);
-        Scanner sc=new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ten dien thoai: ");
         setName(sc.nextLine());
         System.out.print("Nhap gia: ");
         setPrice(Integer.parseInt(sc.nextLine()));
-        Category=new ProductCategory();
+        Category = new ProductCategory();
         Category.input();
-        NSX=new Manufacturer();
+        NSX = new Manufacturer();
         NSX.input();
     }
-    
+
     @Override
     public String toString() {
-        //return "Phone {" + "name:" + name + ", ID:" + phoneID + ", price= " + DecFormat(price)+" VND" + Category.output()+ NSX.output()+ '}';
-        return String.format("|%-10s|%-20s|%-15s", phoneID,name,DecFormat(price));
+        // return "Phone {" + "name:" + name + ", ID:" + phoneID + ", price= " +
+        // DecFormat(price)+" VND" + Category.output()+ NSX.output()+ '}';
+        return String.format("|%-10s|%-20s|%-15s", phoneID, name, DecFormat(price));
     }
 
-    public void output(){
+    public void output() {
         System.out.print(toString());
     }
-    
+
 }

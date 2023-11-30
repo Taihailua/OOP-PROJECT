@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Customer extends Person{
+public class Customer extends Person {
     private String idCustomer;
 
     public Customer() {
@@ -11,8 +11,6 @@ public class Customer extends Person{
         this.idCustomer = idCustomer;
     }
 
-    
-
     public String getIdCustomer() {
         return idCustomer;
     }
@@ -21,7 +19,6 @@ public class Customer extends Person{
     public String getName() {
         return name;
     }
-
 
     public String getPhone() {
         return phone;
@@ -55,7 +52,6 @@ public class Customer extends Person{
     public void setEmail(String email) {
         this.email = email;
     }
-    
 
     @Override
     public String toString() {
@@ -64,7 +60,6 @@ public class Customer extends Person{
 
     public void inputCustomerInfo() {
         Scanner scanner = new Scanner(System.in);
-
 
         System.out.print("Nhập tên khách hàng: ");
         setName(scanner.nextLine());
@@ -78,8 +73,5 @@ public class Customer extends Person{
         System.out.print("Nhập email: ");
         setEmail(scanner.nextLine());
     }
-      
+
 }
-
-
-

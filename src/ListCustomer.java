@@ -61,9 +61,11 @@ public class ListCustomer {
 
     public void outputCustomer() {
         System.out.println("Danh sách khách hàng:");
-        System.out.println("__________________________________________________________________________________________________");
+        System.out.println(
+                "__________________________________________________________________________________________________");
         System.out.printf("%-20s%-20s%-20s%-20s%-20s\n", "Mã KH", "Tên", "Số điện thoại", "Địa chỉ", "Email");
-        System.out.println("__________________________________________________________________________________________________");
+        System.out.println(
+                "__________________________________________________________________________________________________");
         for (Customer customer : customerList) {
             System.out.printf("%-20s%-20s%-20s%-20s%-20s\n",
                     customer.getIdCustomer(),
@@ -71,7 +73,8 @@ public class ListCustomer {
                     customer.getPhone(),
                     customer.getAddress(),
                     customer.getEmail());
-            System.out.println("--------------------------------------------------------------------------------------------------");
+            System.out.println(
+                    "--------------------------------------------------------------------------------------------------");
 
         }
     }
@@ -230,9 +233,11 @@ public class ListCustomer {
 
     public void searchCustomerByName(String name) {
         System.out.println("Danh sách khách hàng có tên giống với '" + name + "':");
-        System.out.println("__________________________________________________________________________________________________");
+        System.out.println(
+                "__________________________________________________________________________________________________");
         System.out.printf("%-20s%-20s%-20s%-20s%-20s\n", "Mã KH", "Tên", "Số điện thoại", "Địa chỉ", "Email");
-        System.out.println("__________________________________________________________________________________________________");
+        System.out.println(
+                "__________________________________________________________________________________________________");
         for (Customer customer : customerList) {
             if (customer.getName().toLowerCase().contains(name.toLowerCase())) {
                 System.out.printf("%-20s%-20s%-20s%-20s%-20s\n",
@@ -241,7 +246,8 @@ public class ListCustomer {
                         customer.getPhone(),
                         customer.getAddress(),
                         customer.getEmail());
-                System.out.println("--------------------------------------------------------------------------------------------------");
+                System.out.println(
+                        "--------------------------------------------------------------------------------------------------");
             }
         }
     }
