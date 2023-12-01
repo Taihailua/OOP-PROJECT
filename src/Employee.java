@@ -49,12 +49,12 @@ public class Employee extends Person {
     }
 
     public void inputEmployeeInfo() {
-        setName(getInput("Nhập tên nhân viên: "));
-        setPhone(getInput("Nhập số điện thoại: "));
-        setEmail(getInput("Nhập email: "));
-        setAddress(getInput("Nhập địa chỉ: "));
-        setPosition(getInput("Nhập vị trí: "));
-        setSalary(Long.parseLong(getInput("Nhập lương co ban: ")));
+        setName(getInput("Nhap ten nhan vien : "));
+        setPhone(getInput("Nhap so dien thoai: "));
+        setEmail(getInput("Nhap email: "));
+        setAddress(getInput("Nhap dia chi: "));
+        setPosition(getInput("Nhap vi tri: "));
+        setSalary(Long.parseLong(getInput("Nhap luong co ban: ")));
     }
 
     private String getInput(String prompt) {

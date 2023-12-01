@@ -3,6 +3,14 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Order {
+    public static void clearScreen() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     static Scanner sc = new Scanner(System.in);
     private OrderItem orderItems[] = new OrderItem[0];
     private int itemCount = 0;// số lượng mục trong đơn hàng
@@ -99,7 +107,8 @@ public class Order {
         System.out.println("--------------------------------");
         System.out.println("Order Detail:"
                 + "\nOrder code:" + generateOrderCode());
-        System.out.println(String.format("|%-3s|%-10s|%-15s|%-3s|%-14s|", "STT", "PhoneID", "Name", "Amount", "Price"));
+        System.out.println(
+                String.format("|%-3s|%-10s|%-15s|%-3s|%-14s|", "STT", "PhoneID", "Ten", "So luong", "Don gia"));
         for (int i = 0; i < itemCount; i++) {
             System.out.println(String.format("|%-3d|%-10s|%-15s|%-3s|%-14d|",
                     (i + 1),
@@ -132,6 +141,7 @@ public class Order {
     public void showMenu() {
         this.customer.inputCustomerInfo();
         sc.nextLine();
+        clearScreen();
         ImportStock appProduct = new ImportStock();
         appProduct.output();
         while (true) {
@@ -144,18 +154,23 @@ public class Order {
                     inputOrderItem(appProduct);
                     break;
                 case 2:
+                    clearScreen();
                     removeOrderItem();
                     break;
                 case 3:
+                    clearScreen();
                     editOrderItem();
                     break;
                 case 4:
+                    clearScreen();
                     deleteOrderItems();
                     break;
                 case 5:
+                    clearScreen();
                     displayOrderDetail();
                     break;
                 case 0:
+                    clearScreen();
                     return;
                 default:
                     System.out.println("Sai cu phap");

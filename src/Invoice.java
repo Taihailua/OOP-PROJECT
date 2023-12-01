@@ -27,20 +27,20 @@ public class Invoice {
     public void order() {
         Order order = new Order();
         order.displayOrderDetail();
-        System.out.println("Price Sale: $" + sale.getPriceSale());
-        System.out.println("ToTal:" + (order.calculateTotalCost() - sale.getPriceSale()));
+        System.out.println("Giam gia: $" + sale.getPriceSale());
+        System.out.println("Tong:" + (order.calculateTotalCost() - sale.getPriceSale()));
     }
 
     // in hoá đơn sau khi khách hàng thanh toán thành công
     public void printInvoice() {
-        System.out.println("Invoice Information:");
+        System.out.println("Hoa don:");
         System.out.println("===============================");
         order.displayOrderDetail();
-        System.out.println("Price Sale: $" + sale.getPriceSale());
-        System.out.println("ToTal:" + (order.calculateTotalCost() - sale.getPriceSale()));
-        System.out.println("Invoice Date: " + invoiceDate);
+        System.out.println("Giam gia: $" + sale.getPriceSale());
+        System.out.println("Tong:" + (order.calculateTotalCost() - sale.getPriceSale()));
+        System.out.println("Ngay in hoa don: " + invoiceDate);
         System.out.println("===============================");
-        System.out.println("Salesperson: " + salesperson.getName());
+        System.out.println("Nhan vien: " + salesperson.getName());
     }
 
     // xác nhận thanh toán của khách hàng
@@ -58,17 +58,17 @@ public class Invoice {
     public void saveToFile(String fileName) {
         try {
             FileWriter writer = new FileWriter(fileName);
-            writer.write("Salesperson: " + salesperson.getName() + "\n");
-            writer.write("Invoice Information:\n");
+            writer.write("Nhan vien: " + salesperson.getName() + "\n");
+            writer.write("Hoa don:\n");
             writer.write("===============================\n");
             order.displayOrderDetail();
-            writer.write("Total Amount: $" + sale.getPriceSale() + "\n");
-            writer.write("Invoice Date: " + invoiceDate + "\n");
+            writer.write("Tong : $" + sale.getPriceSale() + "\n");
+            writer.write("Ngay in hoa don: " + invoiceDate + "\n");
             writer.write("===============================\n");
             writer.close();
-            System.out.println("Hóa đơn đã được lưu vào file: " + fileName);
+            System.out.println("Hoa don da duoc luu vao file: " + fileName);
         } catch (IOException e) {
-            System.out.println("Có lỗi khi lưu hóa đơn vào file.");
+            System.out.println("Co loi khi xuat hoa don vao file.");
             e.printStackTrace();
         }
     }

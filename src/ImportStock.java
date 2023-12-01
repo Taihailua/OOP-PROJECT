@@ -8,6 +8,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ImportStock implements FileIO {
+    public static void clearScreen() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     Phone[] products = new Phone[0];
     private int[] amount = new int[0];

@@ -3,7 +3,26 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static void clearScreen() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+    // Tạo dữ liệu khách hàng
+    private static void addInitialCustomerData(ListCustomer appCustomer) {
+        appCustomer.loadFromFile();
+    }
+
+    // Tạo dữ liệu nhân viên
+    private static void addInitialEmployeeData(ListEmployee appEmployee) {
+        appEmployee.loadFromFile();
+    }
+
     public static void main(String[] args) {
+        clearScreen();
         Scanner scanner = new Scanner(System.in);
         ListCustomer appCustomer = new ListCustomer();
         ListEmployee appEmployee = new ListEmployee();
@@ -11,9 +30,9 @@ public class Main {
 
         Order appOrder = new Order();
 
-        // Thêm dữ liệu khách hàng ban đầu
+        // Thêm dữ liệu khách hàng
         addInitialCustomerData(appCustomer);
-        // Thêm dữ liệu nhân viên ban đầu
+        // Thêm dữ liệu nhân viên
         addInitialEmployeeData(appEmployee);
 
         int mainChoice;
@@ -29,6 +48,7 @@ public class Main {
             switch (mainChoice) {
                 case 1:
                     // Thực hiện chức năng của khách hàng
+                    clearScreen();
                     int customerChoice;
                     do {
                         System.out.println("____________________________________________________________");
@@ -39,15 +59,18 @@ public class Main {
                         customerChoice = scanner.nextInt();
                         switch (customerChoice) {
                             case 1:
+                                clearScreen();
                                 appOrder.showMenu();
                                 break;
                             default:
                                 System.out.println("Lua chon khong hop le. Hay chon lai.");
                         }
                     } while (customerChoice != 0);
+                    clearScreen();
                     break;
                 case 2:
                     // Thực hiện chức năng của admin
+                    clearScreen();
                     int adminChoice;
                     do {
                         System.out.println("_______________________________________________________");
@@ -62,21 +85,24 @@ public class Main {
 
                         switch (adminChoice) {
                             case 1:
+                                clearScreen();
                                 appCustomer.showMenu();
                                 break;
                             case 2:
+                                clearScreen();
                                 appEmployee.showMenu();
                                 break;
                             case 3:
+                                clearScreen();
                                 appProduct.showMenu();
-
                                 break;
                             case 4:
+                                clearScreen();
                                 appOrder.showMenu();
 
                                 break;
                             case 0:
-                                System.out.println("Tro ve thanh cong!");
+                                clearScreen();
                                 break;
 
                             default:
@@ -91,39 +117,5 @@ public class Main {
                     System.out.println("Lua chon khong hop le. Hay chon lai.");
             }
         } while (mainChoice != 0);
-    }
-
-    // Tạo dữ liệu khách hàng ban đầu
-    private static void addInitialCustomerData(ListCustomer appCustomer) {
-        Customer cus1 = new Customer("KH001", "Pham Van Kiet", "0976204872", "TPHCM", "pvk210504@gmail.com");
-        Customer cus2 = new Customer("KH002", "Nguyen Van A", "0987654321", "Ha Noi", "nguyenvana@gmail.com");
-        Customer cus3 = new Customer("KH003", "Tran Thi B", "0901122334", "Da Nang", "tranthib@gmail.com");
-        Customer cus4 = new Customer("KH004", "Le Van C", "0901122339", "Can Tho", "levanc@gmail.com");
-        Customer cus5 = new Customer("KH005", "Truong Tan D", "09011496566", "Ca Mau", "truongtand@gmail.com");
-
-        appCustomer.addCustomerToArray(cus1);
-        appCustomer.addCustomerToArray(cus2);
-        appCustomer.addCustomerToArray(cus3);
-        appCustomer.addCustomerToArray(cus4);
-        appCustomer.addCustomerToArray(cus5);
-    }
-
-    // Tạo dữ liệu nhân viên ban đầu
-    private static void addInitialEmployeeData(ListEmployee appEmployee) {
-        Employee emp1 = new Employee("NV001", "Pham Van Kiet", "0976204872", "TPHCM", "pvk210504@gmail.com", "QL",
-                40000000);
-        Employee emp2 = new Employee("NV002", "Truong Tan A", "0987654321", "Ha Noi", "nguyenvana@gmail.com", "NV",
-                10000000);
-        Employee emp3 = new Employee("NV003", "Le Thi B", "0901122334", "Da Nang", "tranthib@gmail.com", "NV",
-                12000000);
-        Employee emp4 = new Employee("NV004", "Tran Thi C", "0901122339", "Can Tho", "levanc@gmail.com", "NV", 8000000);
-        Employee emp5 = new Employee("NV005", "Nguyen Van D", "09011496566", "Ca Mau", "truongtand@gmail.com", "NV",
-                6000000);
-
-        appEmployee.addEmployeeToArray(emp1);
-        appEmployee.addEmployeeToArray(emp2);
-        appEmployee.addEmployeeToArray(emp3);
-        appEmployee.addEmployeeToArray(emp4);
-        appEmployee.addEmployeeToArray(emp5);
     }
 }
