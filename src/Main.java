@@ -11,17 +11,6 @@ public class Main {
 
         Order appOrder = new Order();
 
-        OrderItem odt = new OrderItem(appProduct.products[0], 12);
-        OrderItem odt3 = new OrderItem(appProduct.products[4], 12);
-        OrderItem odt1 = new OrderItem(appProduct.products[1], 12);
-        OrderItem odt2 = new OrderItem(appProduct.products[2], 12);
-        Customer cs2 = new Customer("KH2", "Minh Vuong", "0377658957", "8a Phan Van tri", "MV@gmail.com");
-        Order od = new Order(cs2);
-        od.addOrderItem(odt);
-        od.addOrderItem(odt1);
-        od.addOrderItem(odt2);
-        od.addOrderItem(odt3);
-
         // Thêm dữ liệu khách hàng ban đầu
         addInitialCustomerData(appCustomer);
         // Thêm dữ liệu nhân viên ban đầu
@@ -43,14 +32,14 @@ public class Main {
                     int customerChoice;
                     do {
                         System.out.println("____________________________________________________________");
-                        System.out.println("___________________ Chuc nang khach hang ___________________");
+                        System.out.println("___________________ Chao mung khach hang ___________________");
                         System.out.println("1. Quan ly gio hang");
                         System.out.println("0. Thoat");
                         System.out.print("Nhap lua chon cua ban: ");
                         customerChoice = scanner.nextInt();
                         switch (customerChoice) {
                             case 1:
-                                od.showMenu();
+                                appOrder.showMenu();
                                 break;
                             default:
                                 System.out.println("Lua chon khong hop le. Hay chon lai.");
