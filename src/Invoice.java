@@ -15,6 +15,10 @@ public class Invoice {
 
     public Invoice() {
     }
+
+    public Invoice(Order order) {
+        this.order = order;
+    }
     
     public Invoice(Date invoiceDate, Sale sale, Employee salesperson) {
         
@@ -22,6 +26,7 @@ public class Invoice {
         this.sale = sale;
         this.salesperson = salesperson;
     }
+    
     //hiển thị đơn hàng cho khách hàng xem trước khi xác nhận thanh toán
     public void order(){
         Order order=new Order();
@@ -83,19 +88,19 @@ public class Invoice {
             }
         }
     }
-    public static void main(String[] args) {
-        Invoice iv =new Invoice();
-        ImportStock DS=new ImportStock();
-        OrderItem odt=new OrderItem(DS.products[0],12);
-        OrderItem odt3=new OrderItem(DS.products[4],12);
-        OrderItem odt1=new OrderItem(DS.products[1],12);
-        OrderItem odt2=new OrderItem(DS.products[2],12);
-        Customer cs2=new Customer("KH2","Minh Vuong","0377658957","8a Phan Van tri","MV@gmail.com");
-        Order od=new Order(cs2);
-        od.addOrderItem(odt);
-        od.addOrderItem(odt1);
-        od.addOrderItem(odt2);
-        od.addOrderItem(odt3);
-        iv.showMenu();
-    }
+//    public static void main(String[] args) {
+//        Invoice iv =new Invoice();
+//        ImportStock DS=new ImportStock();
+//        OrderItem odt=new OrderItem(DS.products[0],12);
+//        OrderItem odt3=new OrderItem(DS.products[4],12);
+//        OrderItem odt1=new OrderItem(DS.products[1],12);
+//        OrderItem odt2=new OrderItem(DS.products[2],12);
+//        Customer cs2=new Customer("KH2","Minh Vuong","0377658957","8a Phan Van tri","MV@gmail.com");
+//        Order od=new Order(cs2);
+//        od.addOrderItem(odt);
+//        od.addOrderItem(odt1);
+//        od.addOrderItem(odt2);
+//        od.addOrderItem(odt3);
+//        iv.showMenu();
+//    }
 }

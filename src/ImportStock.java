@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ImportStock implements FileIO {
 
-    Phone[] products = new Phone[0];
+    private Phone[] products = new Phone[0];
     private int[] amount = new int[0];
     private int len = 0;
 //    private Employee receiver;
@@ -20,6 +20,14 @@ public class ImportStock implements FileIO {
     }
 
     public ImportStock(int n) {
+    }
+
+    public Phone[] getProducts() {
+        return products;
+    }
+
+    public int[] getAmount() {
+        return amount;
     }
 
     @Override

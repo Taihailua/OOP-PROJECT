@@ -34,6 +34,7 @@ public class Main {
                         System.out.println("____________________________________________________________");
                         System.out.println("___________________ Chao mung khach hang ___________________");
                         System.out.println("1. Quan ly gio hang");
+                        System.out.println("2. Den trang thanh toan");
                         System.out.println("0. Thoat");
                         System.out.print("Nhap lua chon cua ban: ");
                         customerChoice = scanner.nextInt();
@@ -42,7 +43,10 @@ public class Main {
                             case 1:
                                 appOrder.showMenu();
                                 break;
-
+                            case 2:
+                                Invoice HD=new Invoice(appOrder);
+                                HD.showMenu();
+                                break;
                             default:
                                 System.out.println("Lua chon khong hop le. Hay chon lai.");
                         }
@@ -74,7 +78,7 @@ public class Main {
 
                                 break;
                             case 4:
-                                appOrder.showMenu();
+                                //appOrder.showMenu();
 
                                 break;
                             case 0:

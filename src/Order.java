@@ -1,4 +1,5 @@
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,6 +17,24 @@ public class Order {
     public Order(Customer customer) {
         this.customer = customer;
     }
+
+    public OrderItem[] getOrderItems() {
+        return orderItems;
+    }
+
+    public int getItemCount() {
+        return itemCount;
+    }
+
+    public static int getNextOrderCode() {
+        return nextOrderCode;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+    
+    
 
     // tạo mã đơn hàng tự động
     public static String generateOrderCode(){
@@ -90,22 +109,28 @@ public class Order {
         orderItems=Arrays.copyOf(orderItems,0);
         itemCount=0;
     }
+    
+    public String DecFormat(int number) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+        return decimalFormat.format(number);
+    }
+    
    // hiển thị chi tiết từng sản phẩm có trong đơn hàng
     public void displayOrderDetail(){
         System.out.println("Khach hang:"+customer.getName());
         System.out.println("--------------------------------");
         System.out.println("Order Detail:"
                 + "\nOrder code:"+generateOrderCode());
-        System.out.println(String.format("|%-3s|%-10s|%-15s|%-3s|%-14s|", "STT","PhoneID","Name","Amount","Price"));
+        System.out.println(String.format("|%-3s|%-10s|%-25s|%-6s|%-14s|", "STT","PhoneID","Name","Amount","Price (VND)"));
         for(int i=0;i<itemCount;i++){
-            System.out.println(String.format("|%-3d|%-10s|%-15s|%-3s|%-14d|",
+            System.out.println(String.format("|%-3d|%-10s|%-25s|%-6s|%-14s|",
             (i+1),
             orderItems[i].getProduct().getPhoneID(),
             orderItems[i].getProduct().getName(),
             orderItems[i].getAmount(),
-            orderItems[i].getTotalCost()));
+            DecFormat(orderItems[i].getTotalCost())));
         }
-        System.out.println("Total Cost:"+calculateTotalCost());
+        System.out.println("Total Cost:"+DecFormat(calculateTotalCost())+" VND");
     }
     public void inputOrderItem(ImportStock appProduct){
         System.out.print("Nhap ma san pham: ");
@@ -120,18 +145,22 @@ public class Order {
             System.out.println("So luong khong dung");
             return;
         }
-        OrderItem odt=new OrderItem(appProduct.products[pos],amount);
+        if(amount>appProduct.getAmount()[pos]){
+            System.out.println("Vuot qua so luong trong kho");
+            return;
+        }
+        OrderItem odt=new OrderItem(appProduct.getProducts()[pos],amount);
         addOrderItem(odt);
     }
     //menu
     public void showMenu(){
+        System.out.println("Vui long nhap thong tin!");
         this.customer.inputCustomerInfo();
-        sc.nextLine();
         ImportStock appProduct = new ImportStock();
         appProduct.output();
         while(true){
             System.out.println("1.Them san pham\n2. Xoa san pham\n3. Sua san pham");
-            System.out.println("4. Xoa toan bo gio hang\n5. Hien thi gio hang\n0.Quay lai trang mua hang ");
+            System.out.println("4. Xoa toan bo gio hang\n5. Hien thi gio hang\n0.Quay lai");
             System.out.print("Moi chon chuc nang: ");
             int n=Integer.parseInt(sc.nextLine());
             switch(n){
