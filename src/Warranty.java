@@ -1,18 +1,15 @@
 import java.util.Scanner;
-import java.util.Calendar;
-
 public abstract class Warranty {
-    private String productSerialNumber;
-    private String productModel;
-    private Phone product = new Phone();
-    private String description;
-    private String tenKhachHang;
-    private String hanBatDau;
-    private String hanKetThuc;
+    protected String productSerialNumber; 
+    protected String productModel;
+    protected String product;
+    protected String description; 
+    protected String tenKhachHang;
+    protected String hanBatDau;
+    protected String hanKetThuc;
     static Scanner sc = new Scanner(System.in);
 
-    public Warranty(Phone products, String description, String tenKhachHang, String hanBatDau, String hanKetThuc,
-            String productSerialNumber) {
+    public Warranty(String product, String description, String tenKhachHang, String hanBatDau, String hanKetThuc, String productSerialNumber, String productModel) {
         this.product = product;
         this.productSerialNumber = productSerialNumber;
         this.productModel = productModel;
@@ -22,14 +19,15 @@ public abstract class Warranty {
         this.hanKetThuc = hanKetThuc;
     }
 
-    public Warranty() {
+    public Warranty () {
     }
 
-    public void setProduct(Phone product) {
+
+    public void setProduct(String product) {
         this.product = product;
     }
 
-    public Phone getProduct() {
+    public String getProduct() {
         return product;
     }
 
@@ -44,10 +42,12 @@ public abstract class Warranty {
     public String getProductModel() {
         return productModel;
     }
-
     public void setProductModel(String productModel) {
         this.productModel = productModel;
     }
+
+
+
 
     public void setDescription(String description) {
 
@@ -86,35 +86,32 @@ public abstract class Warranty {
     }
 
     public void input() {
-        System.out.println("Nhap ten dien thoai can bao hanh");
-        product.setName(sc.nextLine());
+        System.out.println("Please enter product's name: ");
+        setProduct(sc.nextLine());
         System.out.println("Please enter product's serial number: ");
         setProductSerialNumber(sc.nextLine());
         System.out.println("Please enter product's model: ");
         setProductModel(sc.nextLine());
-        System.out.println("Nhap mo ta cua van de cua dien thoai");
+        System.out.println("Please describe the problem of customer's phone: ");
         setDescription(sc.nextLine());
-        System.out.println("Hay nhap ten khach hang den bao hanh");
+        System.out.println("Please enter customer's name: ");
         setTenKhachHang(sc.nextLine());
-        System.out.println("Hay nhap ngay kich hoat bao hanh (Ghi chu DD/MM/YYYY): ");
+        System.out.println("Please enter warranty activation date (NOTE: enter as DD/MM/YYYY): ");
         setHanBatDau(sc.nextLine());
-        System.out.println("Hay nhap ngay ket thuc bao hanh (Ghi chu DD/MM/YYYY): ");
+        System.out.println("Please enter warraty expiration date (NOTE: enter as DD/MM/YYYY): ");
         setHanketThuc(sc.nextLine());
     }
 
     @Override
     public String toString() {
-        return "Ten Dien Thoai: " + product.getName() + "\t\tSo series: " + productSerialNumber + "\t\tModel: "
-                + getProductModel() + "\t\tMo Ta loi: " + description + "\nTen Khach Hang: " + tenKhachHang
-                + "\t\tNgay Kich Hoat BH: " + hanBatDau + "\t\tNgay het han BH: " + hanKetThuc;
+        return  "Phone's name: " + product + "\t\tSerial Number: " + productSerialNumber + "\t\tModel: " + productModel + "\t\tDescription: " + description + "\nCustomer's name: " + tenKhachHang + "\t\tActivation Date: " + hanBatDau +"\t\tExpiration Date: " + hanKetThuc ;
     }
+    public abstract void calculateRemainingWarranty(String date);
+ 
+    public abstract void isWarrantyValid(String date);
 
-    public abstract void calculateRemainingWarranty();
-
-    public abstract void isWarrantyValid();
-
-    public abstract void printWarrantyDetails();
-
+    public abstract void printWarrantyDetails(String date);
+    
     public void output() {
         System.out.println(toString());
     }
