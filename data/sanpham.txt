@@ -1,12 +1,3 @@
-DT1
-0
-0
-0
-0
-0
-0
-0
-0
 DT2
 Google Pixel 6
 GP6
