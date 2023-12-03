@@ -1,0 +1,5 @@
+Google Pixel 6;GP6;Google;Loi camera;Pham Van Kiet;11/11/2023;20/11/2023
+Huawei P40 Pro;HWP40;Huawei;Chai pin;Nguyen Van A;03/12/2023;07/12/2023
+LG Velvet;LGV;LG;Hu man hinh;Tran Thi B;11/11/2023;20/11/2023
+Motorola Edge+;MTEP;Motorola;Phong pin;Le Van C;03/12/2023;23/12/2023
+SamsungGalaxyS21;SGS21;Samsung;Loi he dieu hanh;Truong Tan D;03/12/2023;12/02/2024
