@@ -15,16 +15,17 @@ public class Order {
     static Scanner sc = new Scanner(System.in);
     private OrderItem orderItems[] = new OrderItem[0];
 
-    private int itemCount=0;// số lượng mục trong đơn hàng
-    private static int nextOrderCode=1;
-    private Customer customer=new Customer();
-   private String code=generateOrderCode();
+    private int itemCount = 0;// số lượng mục trong đơn hàng
+    private static int nextOrderCode = 1;
+    private Customer customer = new Customer();
+    private String code = generateOrderCode();
+
     public Order() {
     }
 
     public Order(Customer customer) {
         this.customer = customer;
-     
+
     }
 
     public OrderItem[] getOrderItems() {
@@ -42,12 +43,10 @@ public class Order {
     public Customer getCustomer() {
         return customer;
     }
-    
-    
 
     // tạo mã đơn hàng tự động
-    public  String generateOrderCode(){
-        String Code="ORD"+String.format("%03d", nextOrderCode);
+    public String generateOrderCode() {
+        String Code = "ORD" + String.format("%03d", nextOrderCode);
         nextOrderCode++;
         return Code;
     }
@@ -155,19 +154,18 @@ public class Order {
             return;
         }
 
-        OrderItem odt = new OrderItem(appProduct.products[pos], amount);
-     
-        if(amount>appProduct.getAmount()[pos]){
+        OrderItem odt = new OrderItem(appProduct.getProducts()[pos], amount);
+
+        if (amount > appProduct.getAmount()[pos]) {
             System.out.println("Vuot qua so luong trong kho");
             return;
         }
         addOrderItem(odt);
         appProduct.update();
     }
-    //menu
-    public void showMenu(){
-        System.out.println("Vui long nhap thong tin!");
-        this.customer.inputCustomerInfo();
+
+    // menu
+    public void showMenu() {
         ImportStock appProduct = new ImportStock();
         appProduct.output();
         while (true) {

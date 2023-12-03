@@ -1,4 +1,4 @@
-DT2
+DT1
 Google Pixel 6
 GP6
 14000000
@@ -9,7 +9,7 @@ Google
 My
 +15555678
 100
-DT3
+DT2
 Huawei P40 Pro
 HWP40
 18000000
@@ -20,7 +20,7 @@ Huawei
 Trung Quoc
 +819012345678
 50
-DT4
+DT3
 KKK
 KKK
 99999
@@ -30,7 +30,7 @@ SamSung
 Hoc Mon
 09762048788
 5000
-DT5
+DT4
 LG Velvet
 LGV
 10000000
@@ -41,7 +41,7 @@ LG
 Han Quoc
 +821054328765
 100
-DT6
+DT5
 Motorola Edge+
 MTEP
 17000000
@@ -52,7 +52,7 @@ Motorola
 My
 +819034567890
 200
-DT7
+DT6
 Nokia 9 PureView
 NKPV
 9000000
@@ -63,7 +63,7 @@ Nokia
 Phan Lan
 +15558765
 150
-DT8
+DT7
 OnePlus 9
 OP9
 12000000
@@ -74,7 +74,7 @@ OnePlus
 Trung Quoc
 +8613845678901
 150
-DT9
+DT8
 Samsung Galaxy S21
 SGS21
 15000000
@@ -86,7 +86,7 @@ Samsung
 Han Quoc
 +15551234
 100
-DT10
+DT9
 Sony Xperia 1 III
 SXP1III
 16000000
@@ -98,7 +98,7 @@ Sony
 Nhat Ban
 +8613678901234
 150
-DT11
+DT10
 Xiaomi Mi 11
 XM11
 13000000
@@ -111,7 +111,7 @@ Xiaomi
 Trung Quoc
 +821098765432
 200
-DT12
+DT11
 iPhone 13 Pro
 IP13P
 20000000

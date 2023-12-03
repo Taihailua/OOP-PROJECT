@@ -27,9 +27,9 @@ public class Main {
         ListCustomer appCustomer = new ListCustomer();
         ListEmployee appEmployee = new ListEmployee();
         ImportStock appProduct = new ImportStock();
-
         Order appOrder = new Order();
-
+        Report appReport = new Report();
+        boolean isSigned = false;
         // Thêm dữ liệu khách hàng
         addInitialCustomerData(appCustomer);
         // Thêm dữ liệu nhân viên
@@ -51,6 +51,11 @@ public class Main {
                     clearScreen();
                     int customerChoice;
                     do {
+                        if (isSigned == false) {
+                            System.out.println("Vui long nhap thong tin!");
+                            appCustomer.inputCustomer();
+                            isSigned = true;
+                        }
                         System.out.println("____________________________________________________________");
                         System.out.println("___________________ Chao mung khach hang ___________________");
                         System.out.println("1. Quan ly gio hang");
@@ -65,7 +70,7 @@ public class Main {
                                 break;
                             case 2:
                                 clearScreen();
-                                Invoice HD=new Invoice(appOrder);
+                                Invoice HD = new Invoice(appOrder);
                                 HD.showMenu();
                                 break;
                             default:
@@ -104,7 +109,8 @@ public class Main {
                                 break;
                             case 4:
                                 clearScreen();
-                                appOrder.showMenu();
+                                appReport.addOrder(appOrder);
+                                appReport.displayOrder();
                                 break;
                             case 0:
                                 clearScreen();
