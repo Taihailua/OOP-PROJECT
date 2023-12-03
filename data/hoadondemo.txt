@@ -1,6 +1,0 @@
-samsung;E2;Lite;bug;Phat Tai;11/11/2023;20/11/2023
-samsung;E2;Lite;bug;Tan;11/11/2023;20/11/2023
-samsung;E2;Lite;bug;Tan Tai;11/11/2023;20/11/2023
-Iphone;E3;15Plus;Screen;Tai Dep Trai;1/11/2021;28/11/2023
-Xiaomi;E4;Mi 10T;Pin;Tai Hai Lua;1/11/2021;28/12/2023
-samsung;E2;Lite;bug;Tan Phat Tai;11/11/2023;1/11/2024
