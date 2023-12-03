@@ -13,8 +13,6 @@ public class ProductWarrantyList {
 
     public void writeToFile(ProductWarranty[] array) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data\\baohanh.txt"))) {
-            writer.write("Phone's name;Serial Number;Model;description;customer's name;Activation Date;Expiration Date");
-            writer.newLine();
             for (ProductWarranty product : array) {
                 writer.write(product.toString());
                 writer.newLine();
@@ -27,7 +25,7 @@ public class ProductWarrantyList {
     public ProductWarranty[] readFromFile() {
         ProductWarranty[] array = new ProductWarranty[0];
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("data\\hoadondemo.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("data\\baohanh.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] txt = line.split(";");
@@ -49,9 +47,9 @@ public class ProductWarrantyList {
     }
 
     public void printList() {
-        System.out.println("List of customers subscribing to Warranty services");
+        System.out.println("Danh Sach Khach Hang Su Dung Dich Vu Bao Hanh");
         System.out.println("__________________________________________________________________________________________________");
-        System.out.printf("%-17s%-17s%-17s%-17s%-17s%-17s%-17s\n", "PhoneName", "Serial", "Model", "Description", "Customer's name", "Activation Date", "Expiration Date");
+        System.out.printf("%-17s%-17s%-17s%-17s%-17s%-17s%-17s\n", "TenDienThoai", "MaDienThoai", "NSX", "MoTa", "TenKhachHang", "NgayKichHoat", "NgayKetThuc");
         System.out.println("__________________________________________________________________________________________________");
         for (ProductWarranty ob : list) {
             System.out.printf("%-17s%-17s%-17s%-17s%-17s%-17s%-17s\n",
@@ -69,14 +67,14 @@ public class ProductWarrantyList {
 
     public void addCustomer() {
         sc.nextLine();
-        String product = getNonEmptyInput("Please enter product's name: ");
-        String activation = getNonEmptyInput("Please enter product's serial number: ");
-        String expiration = getNonEmptyInput("Please enter product's model: ");
-        String serial = getNonEmptyInput("Please describe the product's problem: ");
-        String model = getNonEmptyInput("Please enter customer's name: ");
-        String description = getNonEmptyInput("Please enter warranty activation date (NOTE: enter as DD/MM/YYYY): ");
-        String name = getNonEmptyInput("Please enter warranty expiration date (NOTE: enter as DD/MM/YYYY): ");
-        ProductWarranty ob = new ProductWarranty(product, serial, model, description, name, activation, expiration);
+        String product = getNonEmptyInput("Hay nhap ten san pham: ");
+        String ngayBD = getNonEmptyInput("Hay nhap ma san pham: ");
+        String ngayKT = getNonEmptyInput("Hay nhap nha san xuat: ");
+        String MaDT = getNonEmptyInput("Hay mo ta loi: ");
+        String NSX = getNonEmptyInput("Hay nhap ten khach hang: ");
+        String description = getNonEmptyInput("Hay nhap ngay kich hoat bao hanh (Ghi chu: nhap theo DD/MM/YYYY): ");
+        String name = getNonEmptyInput("Hay nhap ngay ket thuc dich vu bao hanh (Ghi chu: nhap theo DD/MM/YYYY): ");
+        ProductWarranty ob = new ProductWarranty(product, MaDT, NSX, description, name, ngayBD, ngayKT);
         addCustomerToArray(ob);
     }
 
@@ -94,30 +92,6 @@ public class ProductWarrantyList {
         return -1;
     }
 
-    public void printSearchCustomerByName(String name) {
-        int index = findCustomerByName(name);
-        if (index != -1) {
-            System.out.println("Information of Customer" + name + "subscribing to warranty services: ");
-            System.out.println(list[index]);
-        } else {
-            System.out.println("Not found Customer whose name is " + name);
-        }
-    }
-
-    public void deleteCustomerByName(String name) {
-        int index = findCustomerByName(name);
-        if (index != -1) {
-            ProductWarranty[] newArray = new ProductWarranty[list.length - 1];
-            System.arraycopy(list, 0, newArray, 0, index);
-            System.arraycopy(list, index + 1, newArray, index, list.length - index - 1);
-            list = newArray;
-            writeToFile(list);
-            System.out.println("Delete successfully");
-        } else {
-            System.out.println("Customer's name not found");
-        }
-
-    }
 
         public void calculateRemainingWarranty(String date) {
         // Định dạng thời gian
@@ -171,10 +145,9 @@ public class ProductWarrantyList {
 
                 System.out.println("__________________________________________________________ ");
                 System.out.println("___________________ QUAN LY DANH SACH BAO HANH ___________________ ");
-                System.out.println("1. Truy xuat danh sach va in du lieu trong file hoadon.txt");
-                System.out.println("2. Add new customer subscribing to warranty services ");
-                System.out.println("3. In mang danh sach hien tai");
-                System.out.println("4. Tim kiem va xem chi tiet thong tin bao hanh cua khach hang theo ten da nhap");
+                System.out.println("1. Them khach hang dang ki dich vu bao hanh");
+                System.out.println("2. In mang danh sach hien tai");
+                System.out.println("3. Tim kiem va xem chi tiet thong tin bao hanh cua khach hang theo ten da nhap");
                 System.out.println("0. Exit.");
                 System.out.print("Enter your option: ");
                 choice = sc.nextInt();
@@ -190,20 +163,20 @@ public class ProductWarrantyList {
                         break;
                     case 4:
                         sc.nextLine();
-                        String name = getNonEmptyInput("Please enter name: ");
+                        String name = getNonEmptyInput("Hay nhap ten khach hang muon gia han: ");
                         int i = findCustomerByName(name);
                         if (i != -1) {
                             String e = list[i].getHanKetThuc();
                             printWarrantyDetails(e);
                         } else {
-                            System.out.println("Not found Customer whose name is " + name);
+                            System.out.println("Khong tim thay khach hang ten " + name);
                         }
                         break;
                     case 0:
-                        System.out.println("Exit successfully");
+                        System.out.println("Thoat ra thanh cong 1");
                         break;
                     default:
-                        System.out.println("Invalid option ! please re enter your option");
+                        System.out.println("Lua chon khong hop le ! vui long nhap lai");
                 }
 
             } while (choice != 0);
@@ -217,7 +190,7 @@ public class ProductWarrantyList {
             System.out.print(prompt);
             input = sc.nextLine().trim();
             if (input.isEmpty()) {
-                System.out.println("Không được bỏ trống, vui lòng nhập lại!");
+                System.out.println("Khong duoc bo trong, vui long nhap lai!");
             }
         } while (input.isEmpty());
         return input;

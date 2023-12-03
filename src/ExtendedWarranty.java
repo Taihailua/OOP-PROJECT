@@ -68,34 +68,71 @@ public class ExtendedWarranty extends Warranty {
     @Override
     public void calculateRemainingWarranty(String date) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar currentDate = Calendar.getInstance();
-        Calendar newDate = Calendar.getInstance();
+        Calendar newDate = Calendar.getInstance();            
         try {
+            Date endDate = dateFormat.parse(date);
+            Date currDate = new Date();
+            long diffInMillies = endDate.getTime() - currDate.getTime();
+            long diff = java.util.concurrent.TimeUnit.DAYS.convert(diffInMillies, java.util.concurrent.TimeUnit.MILLISECONDS);
+            int addi = (int) diff;
+            if (diff != 0) {
             System.out.println("Hay nhap thoi luong muon gia han: ");
             int extendedPeriod = Integer.parseInt(sc.nextLine());
             System.out.println("Hay chon thoi luong gia han (ngay/thang/nam)");
             String c = sc.nextLine();
-            switch (c) {
-                case "ngay":
-                    currentDate.add(Calendar.DATE, extendedPeriod);
-                    break;
-                case "thang":
-                    currentDate.add(Calendar.MONTH, extendedPeriod);
-                    break;
-                case "nam":
-                    currentDate.add(Calendar.YEAR, extendedPeriod);
-                    break;
-                // Các trường hợp khác có thể thêm vào sau này
-                default:
-                    System.out.println("Thoi luong khong hop le !");
-                    break;
+                switch (c) {
+                    case "ngay":
+                        currentDate.add(Calendar.DATE, extendedPeriod);
+                        break;
+                    case "thang":
+                        currentDate.add(Calendar.MONTH, extendedPeriod);
+                        break;
+                    case "nam":
+                        currentDate.add(Calendar.YEAR, extendedPeriod);
+                        break;
+                    // Các trường hợp khác có thể thêm vào sau này
+                    default:
+                        System.out.println("Thoi luong khong hop le !");
+                        break;
+                }
+                String newActivateDateString = df.format(newDate.getTime());
+                String newDateString = df.format(currentDate.getTime());
+                setHanketThuc(newDateString);
+                setHanBatDau(newActivateDateString);
+                System.out.println("Gia han bao hanh thanh cong !");
+                System.out.println("Da gia han them " + extendedPeriod +" "+ c);
+            } else {
+                System.out.println("Hay nhap thoi luong muon gia han: ");
+                int extendedPeriod = Integer.parseInt(sc.nextLine());
+                System.out.println("Hay chon thoi luong gia han (ngay/thang/nam)");
+                String c = sc.nextLine();
+                switch (c) {
+                    case "ngay":
+                        currentDate.add(Calendar.DATE, extendedPeriod + addi);
+                        break;
+                    case "thang":
+                        currentDate.add(Calendar.DATE,addi);
+                        currentDate.add(Calendar.MONTH, extendedPeriod);
+                        break;
+                    case "nam":
+                        currentDate.add(Calendar.DATE,addi);
+                        currentDate.add(Calendar.YEAR, extendedPeriod);
+                        break;
+                    // Các trường hợp khác có thể thêm vào sau này
+                    default:
+                        System.out.println("Thoi luong khong hop le !");
+                        break;
+                }
+                String newActivateDateString = df.format(newDate.getTime());
+                String newDateString = df.format(currentDate.getTime());
+                setHanketThuc(newDateString);
+                setHanBatDau(newActivateDateString);
+                System.out.println("Gia han bao hanh thanh cong !");
+                System.out.println("Da gia han them " + extendedPeriod +" "+ c);
             }
-            String newActivateDateString = df.format(newDate.getTime());
-            String newDateString = df.format(currentDate.getTime());
-            setHanketThuc(newDateString);
-            setHanBatDau(newActivateDateString);
-            System.out.println("Gia han bao hanh thanh cong !");
-            System.out.println("Da gia han them " + extendedPeriod +" "+ c);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -15,8 +15,6 @@ public class ExtendWarrantyList {
 
     public void writeToFile(ProductWarranty[] array) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data\\baohanh.txt"))) {
-            writer.write("Phone's name;Serial Number;Model;description;customer's name;Activation Date;Expiration Date");
-            writer.newLine();
             for (ProductWarranty product : array) {
                 writer.write(product.toString());
                 writer.newLine();
@@ -29,7 +27,7 @@ public class ExtendWarrantyList {
     public ProductWarranty[] readFromFile() {
         ProductWarranty[] array = new ProductWarranty[0];
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("data\\hoadondemo.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("data\\baohanh.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] txt = line.split(";");
@@ -42,7 +40,9 @@ public class ExtendWarrantyList {
                 String name = txt[6];
                 ProductWarranty ob = new ProductWarranty(product, serial, model, des, name, activation, expiration);
                 array = Arrays.copyOf(array, array.length + 1);
-                array[array.length - 1] = ob;
+                array[array.length-1] = ob;
+                
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -51,9 +51,9 @@ public class ExtendWarrantyList {
     }
 
     public void printList() {
-        System.out.println("List of customers subscribing to Warranty services");
+        System.out.println("Danh Sach Khach Hang Su Dung Dich Vu Bao Hanh");
         System.out.println("__________________________________________________________________________________________________");
-        System.out.printf("%-17s%-17s%-17s%-17s%-17s%-17s%-17s\n", "PhoneName", "Serial", "Model", "Description", "Customer's name", "Activation Date", "Expiration Date");
+        System.out.printf("%-17s%-17s%-17s%-17s%-17s%-17s%-17s\n", "TenDienThoai", "MaDienThoai", "NSX", "MoTa", "TenKhachHang", "NgayKichHoat", "NgayKetThuc");
         System.out.println("__________________________________________________________________________________________________");
         for (ProductWarranty ob : list) {
             System.out.printf("%-17s%-17s%-17s%-17s%-17s%-17s%-17s\n",
@@ -71,14 +71,14 @@ public class ExtendWarrantyList {
 
     public void addCustomer() {
         sc.nextLine();
-        String product = getNonEmptyInput("Please enter product's name: ");
-        String activation = getNonEmptyInput("Please enter product's serial number: ");
-        String expiration = getNonEmptyInput("Please enter product's model: ");
-        String serial = getNonEmptyInput("Please describe the product's problem: ");
-        String model = getNonEmptyInput("Please enter customer's name: ");
-        String description = getNonEmptyInput("Please enter warranty activation date (NOTE: enter as DD/MM/YYYY): ");
-        String name = getNonEmptyInput("Please enter warranty expiration date (NOTE: enter as DD/MM/YYYY): ");
-        ProductWarranty ob = new ProductWarranty(product, serial, model, description, name, activation, expiration);
+        String product = getNonEmptyInput("Hay nhap ten san pham: ");
+        String ngayBD = getNonEmptyInput("Hay nhap ma san pham: ");
+        String ngayKT = getNonEmptyInput("Hay nhap nha san xuat: ");
+        String MaDT = getNonEmptyInput("Hay mo ta loi: ");
+        String NSX = getNonEmptyInput("Hay nhap ten khach hang: ");
+        String description = getNonEmptyInput("Hay nhap ngay kich hoat bao hanh (Ghi chu: nhap theo DD/MM/YYYY): ");
+        String name = getNonEmptyInput("Hay nhap ngay ket thuc dich vu bao hanh (Ghi chu: nhap theo DD/MM/YYYY): ");
+        ProductWarranty ob = new ProductWarranty(product, MaDT, NSX, description, name, ngayBD, ngayKT);
         addCustomerToArray(ob);
     }
 
@@ -96,61 +96,74 @@ public class ExtendWarrantyList {
         return -1;
     }
 
-    public void printSearchCustomerByName(String name) {
-        int index = findCustomerByName(name);
-        if (index != -1) {
-            System.out.println("Information of Customer" + name + "subscribing to warranty services: ");
-            System.out.println(list[index]);
-        } else {
-            System.out.println("Not found Customer whose name is " + name);
-        }
-    }
-
-    public void deleteCustomerByName(String name) {
-        int index = findCustomerByName(name);
-        if (index != -1) {
-            ProductWarranty[] newArray = new ProductWarranty[list.length - 1];
-            System.arraycopy(list, 0, newArray, 0, index);
-            System.arraycopy(list, index + 1, newArray, index, list.length - index - 1);
-            list = newArray;
-            writeToFile(list);
-            System.out.println("Delete successfully");
-        } else {
-            System.out.println("Customer's name not found");
-        }
-
-    }
 
     public void calculateRemainingWarranty(String date, int i) {
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar currentDate = Calendar.getInstance();
-        Calendar newDate = Calendar.getInstance();
+        Calendar newDate = Calendar.getInstance();            
         try {
+            Date endDate = dateFormat.parse(date);
+            Date currDate = new Date();
+            long diffInMillies = endDate.getTime() - currDate.getTime();
+            long diff = java.util.concurrent.TimeUnit.DAYS.convert(diffInMillies, java.util.concurrent.TimeUnit.MILLISECONDS);
+            int addi = (int) diff;
+            if (diff <= 0 ) {
             System.out.println("Hay nhap thoi luong muon gia han: ");
             int extendedPeriod = Integer.parseInt(sc.nextLine());
             System.out.println("Hay chon thoi luong gia han (ngay/thang/nam)");
             String c = sc.nextLine();
-            switch (c) {
-                case "ngay":
-                    currentDate.add(Calendar.DATE, extendedPeriod);
-                    break;
-                case "thang":
-                    currentDate.add(Calendar.MONTH, extendedPeriod);
-                    break;
-                case "nam":
-                    currentDate.add(Calendar.YEAR, extendedPeriod);
-                    break;
-                // Các trường hợp khác có thể thêm vào sau này
-                default:
-                    System.out.println("Thoi luong khong hop le !");
-                    break;
+                switch (c) {
+                    case "ngay":
+                        currentDate.add(Calendar.DATE, extendedPeriod);
+                        break;
+                    case "thang":
+                        currentDate.add(Calendar.MONTH, extendedPeriod);
+                        break;
+                    case "nam":
+                        currentDate.add(Calendar.YEAR, extendedPeriod);
+                        break;
+                    // Các trường hợp khác có thể thêm vào sau này
+                    default:
+                        System.out.println("Thoi luong khong hop le !");
+                        break;
+                }
+                String newActivateDateString = df.format(newDate.getTime());
+                String newDateString = df.format(currentDate.getTime());
+                list[i].setHanketThuc(newDateString);
+                list[i].setHanBatDau(newActivateDateString);
+                System.out.println("Gia han bao hanh thanh cong !");
+                System.out.println("Da gia han them " + extendedPeriod +" "+ c);
+            } else {
+                System.out.println("Hay nhap thoi luong muon gia han: ");
+                int extendedPeriod = Integer.parseInt(sc.nextLine());
+                System.out.println("Hay chon thoi luong gia han (ngay/thang/nam)");
+                String c = sc.nextLine();
+                switch (c) {
+                    case "ngay":
+                        currentDate.add(Calendar.DATE, extendedPeriod + addi + 1);
+                        break;
+                    case "thang":
+                        currentDate.add(Calendar.DATE,addi + 1);
+                        currentDate.add(Calendar.MONTH, extendedPeriod);
+                        break;
+                    case "nam":
+                        currentDate.add(Calendar.DATE,addi + 1);
+                        currentDate.add(Calendar.YEAR, extendedPeriod);
+                        break;
+                    // Các trường hợp khác có thể thêm vào sau này
+                    default:
+                        System.out.println("Thoi luong khong hop le !");
+                        break;
+                }
+                String newActivateDateString = df.format(newDate.getTime());
+                String newDateString = df.format(currentDate.getTime());
+                list[i].setHanketThuc(newDateString);
+                list[i].setHanBatDau(newActivateDateString);
+                System.out.println("Gia han bao hanh thanh cong !");
+                System.out.println("Da gia han them " + extendedPeriod +" "+ c);
             }
-            String newActivateDateString = df.format(newDate.getTime());
-            String newDateString = df.format(currentDate.getTime());
-            list[i].setHanketThuc(newDateString);
-            list[i].setHanBatDau(newActivateDateString);
-            System.out.println("Gia han bao hanh thanh cong !");
-            System.out.println("Da gia han them " + extendedPeriod +" "+ c);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -185,8 +198,6 @@ public class ExtendWarrantyList {
             do {
                 System.out.println("__________________________________________________________ ");
                 System.out.println("___________________ QUAN LY DANH SACH BAO HANH ___________________ ");
-                System.out.println("1. Truy xuat danh sach va in du lieu trong file hoadon.txt");
-                System.out.println("2. Add new customer subscribing to warranty services ");
                 System.out.println("3. In mang danh sach hien tai");
                 System.out.println("4. Tim va gia han bao hanh cua khach hang theo ten da tim");
                 System.out.println("0. Exit.");
@@ -209,6 +220,7 @@ public class ExtendWarrantyList {
                         if (i != -1) {
                             String e = list[i].getHanKetThuc();
                             calculateRemainingWarranty(e, i);
+                            e = list[i].getHanKetThuc();
                             isWarrantyValid(e);
                             writeToFile(list);
                         } else {
