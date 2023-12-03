@@ -9,13 +9,14 @@ public class Order {
     private int itemCount=0;// số lượng mục trong đơn hàng
     private static int nextOrderCode=1;
     private Customer customer=new Customer();
-   
+   private String code=generateOrderCode();
     
     public Order() {
     }
 
     public Order(Customer customer) {
         this.customer = customer;
+     
     }
 
     public OrderItem[] getOrderItems() {
@@ -37,7 +38,7 @@ public class Order {
     
 
     // tạo mã đơn hàng tự động
-    public static String generateOrderCode(){
+    public  String generateOrderCode(){
         String Code="ORD"+String.format("%03d", nextOrderCode);
         nextOrderCode++;
         return Code;
@@ -120,7 +121,7 @@ public class Order {
         System.out.println("Khach hang:"+customer.getName());
         System.out.println("--------------------------------");
         System.out.println("Order Detail:"
-                + "\nOrder code:"+generateOrderCode());
+                + "\nOrder code:"+this.code);
         System.out.println(String.format("|%-3s|%-10s|%-25s|%-6s|%-14s|", "STT","PhoneID","Name","Amount","Price (VND)"));
         for(int i=0;i<itemCount;i++){
             System.out.println(String.format("|%-3d|%-10s|%-25s|%-6s|%-14s|",
@@ -145,12 +146,14 @@ public class Order {
             System.out.println("So luong khong dung");
             return;
         }
+     
         if(amount>appProduct.getAmount()[pos]){
             System.out.println("Vuot qua so luong trong kho");
             return;
         }
         OrderItem odt=new OrderItem(appProduct.getProducts()[pos],amount);
         addOrderItem(odt);
+        appProduct.update();
     }
     //menu
     public void showMenu(){

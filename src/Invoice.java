@@ -8,11 +8,9 @@ public class Invoice {
     static Scanner sc= new Scanner(System.in);
     private Order order;
     private Date invoiceDate;
-    private Employee salesperson;
-    private Sale sale;
-    private Payment payment;
-    private static boolean isPaid=false;
+    private Employee salesperson=new Employee("NV001","Pham Van Kiet","0976204872","pvk210504@gmail.com","TPHCM","QL",40000000);
 
+    private static boolean isPaid=false;
     public Invoice() {
     }
 
@@ -20,31 +18,21 @@ public class Invoice {
         this.order = order;
     }
     
-    public Invoice(Date invoiceDate, Sale sale, Employee salesperson) {
+    public Invoice(Date invoiceDate, Employee salesperson) {
         
         this.invoiceDate = invoiceDate;
-        this.sale = sale;
+       
         this.salesperson = salesperson;
     }
     
     //hiển thị đơn hàng cho khách hàng xem trước khi xác nhận thanh toán
     public void order(){
-        Order order=new Order();
-        order.displayOrderDetail();
-        System.out.println("Price Sale: $" + sale.getPriceSale());
-        System.out.println("ToTal:"+(order.calculateTotalCost() - sale.getPriceSale()));
+        
+        this.order.displayOrderDetail();
+        System.out.println("ToTal:"+order.calculateTotalCost());
     }
-    //in hoá đơn sau khi khách hàng thanh toán thành công
-    public void printInvoice() {
-        System.out.println("Invoice Information:");
-        System.out.println("===============================");
-        order.displayOrderDetail();
-        System.out.println("Price Sale: $" + sale.getPriceSale());
-        System.out.println("ToTal:"+(order.calculateTotalCost() - sale.getPriceSale()));
-        System.out.println("Invoice Date: " + invoiceDate);
-        System.out.println("===============================");
-        System.out.println("Salesperson: " + salesperson.getName());
-    }
+    
+    
     // xác nhận thanh toán của khách hàng
    public void payInvoice(){
        if(!isPaid){
@@ -56,6 +44,19 @@ public class Invoice {
        }
        return ;
    }
+   //in hoá đơn sau khi khách hàng thanh toán thành công
+   public void printInvoice() {
+        if(isPaid==true){
+        System.out.println("Invoice Information:");
+        System.out.println("===============================");
+        order.displayOrderDetail();
+        System.out.println("ToTal:"+order.calculateTotalCost());
+        System.out.println("Invoice Date: " + invoiceDate);
+        System.out.println("===============================");
+        System.out.println("Salesperson: " + salesperson.getName());
+        saveToFile("data\\hoadon.txt");
+        }
+    }
 //lưu hoá đơn vào file
     public void saveToFile(String fileName) {
         try {
@@ -64,7 +65,6 @@ public class Invoice {
             writer.write("Invoice Information:\n");
             writer.write("===============================\n");
             order.displayOrderDetail();
-            writer.write("Total Amount: $" + sale.getPriceSale()+ "\n");
             writer.write("Invoice Date: " + invoiceDate + "\n");
             writer.write("===============================\n");
             writer.close();
@@ -81,26 +81,11 @@ public class Invoice {
             System.out.print("Moi chon chuc nang: ");
             int n=Integer.parseInt(sc.nextLine());
             switch(n){
-                case 1: printInvoice();break;
+                case 1: order();break;
                 case 2: payInvoice();break;
                 case 0: return;
                 default: System.out.println("Sai cu phap");break;
             }
         }
     }
-//    public static void main(String[] args) {
-//        Invoice iv =new Invoice();
-//        ImportStock DS=new ImportStock();
-//        OrderItem odt=new OrderItem(DS.products[0],12);
-//        OrderItem odt3=new OrderItem(DS.products[4],12);
-//        OrderItem odt1=new OrderItem(DS.products[1],12);
-//        OrderItem odt2=new OrderItem(DS.products[2],12);
-//        Customer cs2=new Customer("KH2","Minh Vuong","0377658957","8a Phan Van tri","MV@gmail.com");
-//        Order od=new Order(cs2);
-//        od.addOrderItem(odt);
-//        od.addOrderItem(odt1);
-//        od.addOrderItem(odt2);
-//        od.addOrderItem(odt3);
-//        iv.showMenu();
-//    }
 }
