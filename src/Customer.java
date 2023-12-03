@@ -1,6 +1,14 @@
 import java.util.Scanner;
 
-public class Customer extends Person{
+public class Customer extends Person {
+    public static void clearScreen() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     private String idCustomer;
 
     public Customer() {
@@ -11,8 +19,6 @@ public class Customer extends Person{
         this.idCustomer = idCustomer;
     }
 
-    
-
     public String getIdCustomer() {
         return idCustomer;
     }
@@ -21,7 +27,6 @@ public class Customer extends Person{
     public String getName() {
         return name;
     }
-
 
     public String getPhone() {
         return phone;
@@ -55,7 +60,6 @@ public class Customer extends Person{
     public void setEmail(String email) {
         this.email = email;
     }
-    
 
     @Override
     public String toString() {
@@ -63,23 +67,21 @@ public class Customer extends Person{
     }
 
     public void inputCustomerInfo() {
+        clearScreen();
+        System.out.println("----------------------------------------------------------------");
+        System.out.println("------------------Nhap thong tin cua ban: ----------------------");
         Scanner scanner = new Scanner(System.in);
-
-
-        System.out.print("Nhập tên khách hàng: ");
+        System.out.print("Nhap ten khach hang: ");
         setName(scanner.nextLine());
 
-        System.out.print("Nhập số điện thoại: ");
+        System.out.print("Nhap so dien thoai: ");
         setPhone(scanner.nextLine());
 
-        System.out.print("Nhập địa chỉ: ");
+        System.out.print("Nhap dia chi: ");
         setAddress(scanner.nextLine());
 
-        System.out.print("Nhập email: ");
+        System.out.print("Nhap email: ");
         setEmail(scanner.nextLine());
     }
-      
+
 }
-
-
-

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Employee extends Person {
-      private Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
     private String idEmployee;
     private String position;
     private long salary;
@@ -9,7 +9,8 @@ public class Employee extends Person {
     public Employee() {
     }
 
-    public Employee(String idEmployee, String name, String phone, String address, String email, String position, long salary) {
+    public Employee(String idEmployee, String name, String phone, String address, String email, String position,
+            long salary) {
         super(name, phone, address, email);
         this.idEmployee = idEmployee;
         this.position = position;
@@ -48,12 +49,12 @@ public class Employee extends Person {
     }
 
     public void inputEmployeeInfo() {
-        setName(getInput("Nhập tên nhân viên: "));
-        setPhone(getInput("Nhập số điện thoại: "));
-        setEmail(getInput("Nhập email: "));
-        setAddress(getInput("Nhập địa chỉ: "));
-        setPosition(getInput("Nhập vị trí: "));
-        setSalary(Long.parseLong(getInput("Nhập lương co ban: ")));
+        setName(getInput("Nhap ten nhan vien : "));
+        setPhone(getInput("Nhap so dien thoai: "));
+        setEmail(getInput("Nhap email: "));
+        setAddress(getInput("Nhap dia chi: "));
+        setPosition(getInput("Nhap vi tri: "));
+        setSalary(Long.parseLong(getInput("Nhap luong co ban: ")));
     }
 
     private String getInput(String prompt) {

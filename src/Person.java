@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -24,7 +25,8 @@ public class Person {
         this.address = address;
         this.email = email;
     }
-//  GET
+
+    // GET
     public String getName() {
         return name;
     }
@@ -41,7 +43,7 @@ public class Person {
         return email;
     }
 
-//    SET
+    // SET
     public void setName(String name) {
         this.name = name;
     }
@@ -57,8 +59,8 @@ public class Person {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-     public void inputInfo() {
+
+    public void inputInfo() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Nhap ten : ");

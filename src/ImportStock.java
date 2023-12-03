@@ -8,11 +8,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class ImportStock implements FileIO {
+    public static void clearScreen() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     private Phone[] products = new Phone[0];
     private int[] amount = new int[0];
     private int len = 0;
-//    private Employee receiver;
+    // private Employee receiver;
     static Scanner sc = new Scanner(System.in);
 
     public ImportStock() {
@@ -38,7 +45,8 @@ public class ImportStock implements FileIO {
                 products = Arrays.copyOf(products, len);
                 ProductCategory Category = new ProductCategory();
                 Manufacturer NSX = new Manufacturer();
-                products[len - 1] = new Phone(br.readLine(), br.readLine(), Integer.parseInt(br.readLine()), Category, NSX);
+                products[len - 1] = new Phone(br.readLine(), br.readLine(), Integer.parseInt(br.readLine()), Category,
+                        NSX);
                 Category.setSoDong(Integer.parseInt(br.readLine()));
                 String description = "";
                 int n = Category.getSoDong();
@@ -98,7 +106,8 @@ public class ImportStock implements FileIO {
     public void findName() {
         System.out.print("Nhap ten san pham: ");
         String name = sc.nextLine();
-        ImportStock list = new ImportStock(0);//constructor dung de tao doi tuong empty ImportStock, doi so n khong co tac dung
+        ImportStock list = new ImportStock(0);// constructor dung de tao doi tuong empty ImportStock, doi so n khong co
+                                              // tac dung
         for (int i = 0; i < len; i++) {
             if (products[i].getName().toLowerCase().contains(name.toLowerCase())) {
                 list.addListFind(products[i], amount[i]);
@@ -261,7 +270,8 @@ public class ImportStock implements FileIO {
     public void output() {
         System.out.println("-----------------Danh Sach Dien thoai-------------------");
         System.out.println("__________________________________________________________________________________");
-        System.out.println(String.format("|%-10s|%-20s|%-15s|%-15s|%-6s|", "ID", "NAME", "NSX Name", "PRICE(VND)", "AMOUNT"));
+        System.out.println(
+                String.format("|%-10s|%-20s|%-15s|%-15s|%-6s|", "ID", "NAME", "NSX Name", "PRICE(VND)", "AMOUNT"));
         System.out.println("__________________________________________________________________________________");
         for (int i = 0; i < len; i++) {
             System.out.print(String.format("|%-10s|%-20s|%-15s|%-15s|%-6d|",
@@ -307,10 +317,18 @@ public class ImportStock implements FileIO {
             System.out.print("Moi chon chuc nang: ");
             int n = Integer.parseInt(sc.nextLine());
             switch (n) {
-                case 1: output(); break;
-                case 2: add(); break;
-                case 3: edit(); break;
-                case 4: remove(); break;
+                case 1:
+                    output();
+                    break;
+                case 2:
+                    add();
+                    break;
+                case 3:
+                    edit();
+                    break;
+                case 4:
+                    remove();
+                    break;
                 case 5:
                     sortByPriceDescending(); // Thực hiện sắp xếp
                     output(); // Hiển thị danh sách đã sắp xếp
@@ -341,7 +359,7 @@ public class ImportStock implements FileIO {
         }
     }
 
-    //Kiet: sap xep mat hang gia giam dan
+    // Kiet: sap xep mat hang gia giam dan
     public void sortByPriceDescending() {
         // Sắp xếp mảng products và amount theo giá giảm dần
         for (int i = 0; i < len - 1; i++) {
@@ -361,7 +379,7 @@ public class ImportStock implements FileIO {
         }
     }
 
-    //Kiet: sap xep mat hang so luong giam dan
+    // Kiet: sap xep mat hang so luong giam dan
     public void sortByAmountDescending() {
         // Sắp xếp mảng amount theo số lượng giảm dần
         for (int i = 0; i < len - 1; i++) {

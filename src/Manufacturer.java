@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Manufacturer {
-    private String name,address,phoneNumber;
+    private String name, address, phoneNumber;
 
     public Manufacturer() {
     }
@@ -35,10 +35,9 @@ public class Manufacturer {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
-    
-    public void input(){
-        Scanner sc=new Scanner(System.in);
+
+    public void input() {
+        Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ten NSX: ");
         setName(sc.nextLine());
         System.out.print("Nhap dia chi NSX: ");
@@ -46,9 +45,9 @@ public class Manufacturer {
         System.out.print("Nhap SDT NSX: ");
         setPhoneNumber(sc.nextLine());
     }
-    
-    public void newedit(){
-        Scanner sc=new Scanner(System.in);
+
+    public void newedit() {
+        Scanner sc = new Scanner(System.in);
         System.out.print("New name NSX: ");
         setName(sc.nextLine());
         System.out.print("New address: ");
@@ -59,10 +58,10 @@ public class Manufacturer {
 
     @Override
     public String toString() {
-        return name +"\n"+address+"\n"+phoneNumber;
+        return name + "\n" + address + "\n" + phoneNumber;
     }
-    
-    public String output(){
+
+    public String output() {
         return ", nameNSX=" + name + ", address=" + address + ", phoneNumber=" + phoneNumber;
     }
 }
